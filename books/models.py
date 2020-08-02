@@ -1,19 +1,24 @@
 from django.db import models
+from django.core.validators import MinLengthValidator
 
-# Create your models here.
-class Book(model.Model):
-    book_id: 2767052
-    books_count: 272
-    authors: "Suzanne Collins"
-    publication_year: 2008
-    title: "The Hunger Games (The Hunger Games, #1)"
-    language_code: "eng"
-    average_rating: 4.34
-    ratings_count: 4942365
-    ratings_1: 66715
-    ratings_2: 127936
-    ratings_3: 560092
-    ratings_4: 1481305
-    ratings_5: 2706317
-    image_url: "https://images.gr-assets.com/books/1447303603m/2767052.jpg"
-  
+
+class Book(models.Model):
+    book_id = models.IntegerField(unique=True)
+    books_count = models.IntegerField(default=1)
+    authors = models.CharField(max_length=254)
+    publication_year = models.CharField(max_length=4, null=True, blank=True,
+                                        validators=[MinLengthValidator(4)])
+    title = models.CharField(max_length=254)
+    language_code = models.CharField(max_length=5, default="eng")
+    average_rating = models.DecimalField(max_digits=3, decimal_places=2,
+                                         null=True, blank=True)
+    ratings_count = models.IntegerField(null=True, blank=True)
+    ratings_1 = models.IntegerField(null=True, blank=True)
+    ratings_2 = models.IntegerField(null=True, blank=True)
+    ratings_3 = models.IntegerField(null=True, blank=True)
+    ratings_4 = models.IntegerField(null=True, blank=True)
+    ratings_5 = models.IntegerField(null=True, blank=True)
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
