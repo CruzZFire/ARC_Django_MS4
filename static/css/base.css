@@ -1,4 +1,14 @@
-/* general */
+/* General */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
 
 .sans-pro-font {
     font-family: 'Source Sans Pro', sans-serif;
@@ -16,7 +26,21 @@
     margin-bottom: 0;
 }
 
-/* header */
+.mb-3 {
+    margin-bottom: 27px;
+}
+
+/* AllAuth */
+
+p a {
+    color: #FF6F00;
+}
+
+form a {
+    color: #FF6F00;
+}
+
+/* Header */
 
 .header-wrapper {
     min-height: 112px;
@@ -28,7 +52,7 @@
     word-spacing: 14px;
 }
 
-/* sidenav */
+/* SideNav */
 
 .sidenav-trigger {
     float: right !important;
@@ -38,7 +62,7 @@
     width: 240px;
 }
 
-/* home page */
+/* Index */
 
 .parallax-top {
     height: 381px;
@@ -92,7 +116,7 @@
     height: 2px;
 }
 
-/* -------------- MEDIA QUERIES -------------- */
+/* -------------- Media Queries -------------- */
 
 @media screen and (min-width: 480px) {
     .header-wrapper {

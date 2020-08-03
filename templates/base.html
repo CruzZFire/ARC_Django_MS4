@@ -28,7 +28,7 @@
     <!-- possible extra js -->
     {% block extra_js %}{% endblock %}
     <!-- page title -->
-    <title>ARC Community {% if extra_title %}- {{ extra_title }}{% endif %}</title>
+    <title>ARC Community {% block extra_title %}{% endblock %}</title>
 </head>
 
 <body class="amber lighten-5">
@@ -124,8 +124,10 @@
     </div>
     {% endif %}
 
+    <main>
     {% block content %}
     {% endblock %}
+    </main>
 
     <footer class="page-footer grey darken-4 amber-text text-lighten-3">
         <div class="container">
