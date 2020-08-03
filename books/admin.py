@@ -17,7 +17,8 @@ class BookAdmin(admin.ModelAdmin):
         "ratings_3",
         "ratings_4",
         "ratings_5",
-        "image_url",
+        "promoted",
+        "v_promoted",
     )
     ordering = ("title",)
 
