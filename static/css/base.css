@@ -1,3 +1,13 @@
+/* general */
+
+.sans-pro-font {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
 /* header */
 
 .header-wrapper {
@@ -5,7 +15,6 @@
 }
 
 .brand-logo {
-    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 900;
     letter-spacing: 2px;
     word-spacing: 14px;
@@ -18,7 +27,26 @@
 }
 
 .sidenav {
-    width: 250px;
+    width: 240px;
+}
+
+/* home page */
+
+.parallax-top {
+    height: 400px;
+}
+
+.parallax-split{
+    height: 250px;
+}
+
+.carousel {
+    height: 400px;
+    margin-top: -81px;
+}
+
+.carousel img {
+    height: 280px;
 }
 
 /* ------------------------------- bootstrap toasts */
