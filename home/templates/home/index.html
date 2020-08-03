@@ -2,94 +2,153 @@
 {% load static %}
 
 {% block content %}
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-        <div class="row center">
-          <a href="" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-        </div>
-        <br><br>
-      </div>
-    </div>
-    <div class="parallax"><img src="{{ MEDIA_URL }}home-hero.png" alt="book-spark"></div>
-  </div>
+<!-- Top Carousel Section -->
+<div class="parallax-container parallax-top">
+	<div class="section no-pad-bot">
+		<div class="container">
+			<div>
+				<h5 class="mt-0 center-align grey-text text-darken-4 parallax-slogan">Discover
+					<span class="amber lighten-3 grey-text text-darken-4">New</span> Featured Books
+					<span class="amber lighten-3 grey-text text-darken-4">Every Week!!</span>
+				</h5>
+			</div>
+			<div class="carousel">
+				{% for item in promoted %}
+				<a class="carousel-item" href=""><img src="{{ item.image_url }}"></a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="parallax"><img src="{{ MEDIA_URL }}home-hero.png" alt="book-spark"></div>
+</div>
 
-  <div class="container">
-    <div class="section">
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
+<!-- CTA Section -->
+<div class="container">
+	<div class="section">
+		<div class="row slogan-cta mb-0 center-align valign-wrapper">
+			<div class="row slogan-cta-distributor">
+				<div class="col s12 l6">
+					<div class="row">
+						<h6 class="grey-text text-darken-4">
+							Are you always trying to discover new writers? Are you a writer yourself and need your book
+							reviewed?
+							This community joins both emerging writers and curious readers in a discovery journey.
+							<strong>Join Now!!</strong>
+						</h6>
+					</div>
+				</div>
+				<div class="col s12 l5 offset-l1 mt-3">
+					<div class="row">
+						<div class="col s6">
+							<a class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+								<i class="material-icons left amber-text text-lighten-3">chrome_reader_mode</i>
+								<span>Reader</span>
+							</a>
+						</div>
+						<div class="col s6">
+							<a class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+								<i class="material-icons right amber-text text-lighten-3">create</i>
+								<span>Writer</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
+<!-- Slogan Section Top -->
+<div class="parallax-container parallax-split valign-wrapper">
+	<div class="container">
+		<div class="row left">
+			<h4 class="header col s12 amber lighten-3 grey-text text-darken-4 parallax-slogan">Are you ready to find
+				your new favourite book?
+			</h4>
+		</div>
+	</div>
+	<div class="parallax"><img src="{{ MEDIA_URL }}home-main1.png" alt="main-upper"></div>
+</div>
 
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
+<!-- Feats Section -->
+<div class="container feats-container">
+	<div class="section">
+		<div class="row">
+			<div class="col s12 l4">
+				<div class="icon-block">
+					<h5 class="center grey-text text-darken-4">
+						<i class="material-icons">chrome_reader_mode</i>
+					</h5>
+					<h5 class="sans-pro-font center grey-text text-darken-4">For Readers</h5>
+					<p class="light center mb-0">
+						<strong>Create</strong> a profile. <strong>Ask</strong> for a copy. <strong>Read it!!</strong>
+					</p>
+					<p class="light center mb-0 mt-0">
+						Find your next favourites story-tellers and interact with them reviewing the books you read.
+					</p>
+					<p class="light center mb-0 mt-0">
+						Participate in the <strong>ARC Community</strong>, get notifications and share in your social media.
+					</p>
+					<p class="light center mb-0 mt-0">
+						Will you be in the <strong>Top Listings</strong>?
+					</p>
+				</div>
+			</div>
+			<div class="col s12 l4">
+				<div class="icon-block">
+					<h5 class="center grey-text text-darken-4">
+						<i class="material-icons">create</i>
+					</h5>
+					<h5 class="sans-pro-font center grey-text text-darken-4">For Writers</h5>
+					<p class="light center mb-0">
+						Are you a novel writer??<strong> Get noticed!!</strong>
+					</p>
+					<p class="light center mb-0 mt-0">
+						Readers from the <strong>ARC Community</strong> will review your book once they read it.
+						Create a profile, upload your book and <strong>promote it!</strong>
+					</p>
+					<p class="light center mb-0 mt-0">
+						Share the reviews received on your social media to spread the good news!
+					</p>
+				</div>
+			</div>
+			<div class="col s12 l4">
+				<div class="icon-block">
+					<h5 class="center grey-text text-darken-4">
+						<i class="material-icons">people</i>
+					</h5>
+					<h5 class="sans-pro-font center grey-text text-darken-4">Flowing Community</h5>
+					<p class="light center mb-0">
+						The <strong>ARC Community</strong> is composed of readers and writers interacting with each other
+						and the books all at once. Authors can reach their fans, readers can help novel
+						writers, and much more!
+					</p>
+					<p class="light center mb-0 mt-0">
+						Be a part of it and <strong>keep up</strong> to date with the best discoveries!
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Slogan Section Bottom -->
+<div class="parallax-container parallax-split valign-wrapper">
+	<div class="container">
+		<div class="row right">
+			<h4 class="col s12 amber lighten-3 grey-text text-darken-4 parallax-slogan">
+				Meet readers for your new book
+			</h4>
+		</div>
+	</div>
+	<div class="parallax"><img src="{{ MEDIA_URL }}home-main2.png" alt="main-lower"></div>
+</div>
 
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="{{ MEDIA_URL }}home-main1.png" alt="main-upper"></div>
-  </div>
-
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Contact Us</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="{{ MEDIA_URL }}home-main2.png" alt="main-lower"></div>
-  </div>
-
-  <script>
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-  </script>
+<!-- Scripts Inits for Materialize -->
+<script>
+	$(document).ready(function () {
+		$('.parallax').parallax();
+		$('.carousel').carousel();
+	});
+</script>
 {% endblock %}

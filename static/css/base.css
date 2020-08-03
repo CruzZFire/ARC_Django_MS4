@@ -4,8 +4,16 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.mt-2 {
-    margin-top: 20px;
+.mt-0 {
+    margin-top: 0;
+}
+
+.mt-3 {
+    margin-top: 27px;
+}
+
+.mb-0 {
+    margin-bottom: 0;
 }
 
 /* header */
@@ -33,20 +41,38 @@
 /* home page */
 
 .parallax-top {
-    height: 400px;
+    height: 381px;
 }
 
 .parallax-split{
-    height: 250px;
+    height: 270px;
+}
+
+.parallax-slogan {
+    padding: 5px !important;
+    transform: skewX(-20deg);
 }
 
 .carousel {
     height: 400px;
-    margin-top: -81px;
+    margin-top: -87px;
 }
 
 .carousel img {
-    height: 280px;
+    height: 270px;
+}
+
+.slogan-cta span {
+    font-size: 90%;
+}
+
+.slogan-cta-distributor {
+    margin: 0;
+    width: 100%;
+}
+
+.feats-container {
+    width: 90%;
 }
 
 /* ------------------------------- bootstrap toasts */
