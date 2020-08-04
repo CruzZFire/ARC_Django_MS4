@@ -99,6 +99,27 @@ form a {
     width: 90%;
 }
 
+/* Products */
+
+.card-image {
+    min-height: 70%;
+}
+
+.card-image img {
+    height: 280px;
+}
+
+.card-content i {
+    position: absolute;
+    right: 5px;
+}
+
+.card-reveal i {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
