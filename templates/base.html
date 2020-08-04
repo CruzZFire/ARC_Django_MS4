@@ -32,14 +32,14 @@
 </head>
 
 <body class="amber lighten-5">
-
+    <!-- Navigation Section -->
     <header>
         <nav class="grey darken-4 header-wrapper">
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo amber-text text-darken-4 center-align sans-pro-font">ARC Community</a>
+                <a href="{% url 'home' %}" class="brand-logo amber-text text-darken-4 center-align sans-pro-font">ARC Community</a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="" class="amber-text text-lighten-3">Browse All Books</a>
+                        <a href="{% url 'all_books' %}" class="amber-text text-lighten-3">Browse All Books</a>
                     </li>
                     <li>
                         <a href="" class="amber-text text-lighten-3">Top Listings</a>
@@ -47,7 +47,7 @@
                     <li class="amber lighten-3">
                         <a href="" class="grey-text text-darken-4"><strong>Promote Me!</strong></a>
                     </li>
-                    <!-- Slide Triggers -->
+                    <!-- SideNav Trigger -->
                     <li>
                         <a class="sidenav-trigger show-on-large amber-text text-lighten-3" href="#" data-target="slide-out">SignIn/Up</a>
                     </li>
@@ -56,9 +56,8 @@
                     <i class="material-icons amber-text text-lighten-3">menu</i>
                 </a>
             </div>
-
         </nav>
-
+        <!-- SideNav Contents -->
         <ul id="slide-out" class="sidenav amber lighten-5">
             <li>
                 <div class="user-view">
@@ -105,7 +104,8 @@
             </li>
         </ul>
     </header>
-
+    
+    <!-- Toast Controls -->
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
@@ -124,11 +124,13 @@
     </div>
     {% endif %}
 
+    <!-- Template Block Placement -->
     <main>
     {% block content %}
     {% endblock %}
     </main>
 
+    <!-- Footer Space -->
     <footer class="page-footer grey darken-4 amber-text text-lighten-3">
         <div class="container">
             <div class="row">
@@ -142,8 +144,8 @@
                 <div class="col m4 offset-m1 s12 right-align">
                     <h5 class="amber-text text-darken-4">Links</h5>
                     <ul>
-                        <li><a class="amber-text text-lighten-3" href="#!">Home</a></li>
-                        <li><a class="amber-text text-lighten-3" href="#!">Books</a></li>
+                        <li><a class="amber-text text-lighten-3" href="{% url 'home' %}">Home</a></li>
+                        <li><a class="amber-text text-lighten-3" href="{% url 'all_books' %}">Books</a></li>
                         <li><a class="amber-text text-lighten-3" href="#!">Writer Plans</a></li>
                     </ul>
                 </div>
@@ -157,6 +159,7 @@
         </div>
     </footer>
 
+    <!-- JS options and inits -->
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>

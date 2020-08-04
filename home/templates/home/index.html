@@ -14,7 +14,7 @@
 			</div>
 			<div class="carousel">
 				{% for item in promoted %}
-				<a class="carousel-item" href=""><img src="{{ item.image_url }}"></a>
+				<a class="carousel-item" href="{% url 'book_detail' item.book_id %}"><img src="{{ item.image_url }}"></a>
 				{% endfor %}
 			</div>
 		</div>
@@ -40,13 +40,13 @@
 				<div class="col s12 l5 offset-l1 mt-3">
 					<div class="row">
 						<div class="col s6">
-							<a class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+							<a href="{% url 'account_signup' %}" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
 								<i class="material-icons left amber-text text-lighten-3">chrome_reader_mode</i>
 								<span>Reader</span>
 							</a>
 						</div>
 						<div class="col s6">
-							<a class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+							<a href="{% url 'account_signup' %}" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
 								<i class="material-icons right amber-text text-lighten-3">create</i>
 								<span>Writer</span>
 							</a>
