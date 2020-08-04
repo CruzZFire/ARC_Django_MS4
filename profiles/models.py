@@ -3,9 +3,12 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from allauth.account.signals import user_signed_up
 
+from books.models import Book
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    asked_books = {}
 
     def __str__(self):
         return self.user.username
