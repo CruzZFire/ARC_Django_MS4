@@ -2,26 +2,166 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-
-    <div class="row">
-        <div class="col s12 center mt-3">
-            <h4>{{ book.title }}</h4>
+<div class="container grey-text text-darken-4">
+    <!-- Book Title -->
+    <div class="row mt-3 mb-0">
+        <div class="col s12 center">
+            <h4><strong>{{ book.title }}</strong></h4>
         </div>
     </div>
-
-    <div class="row">
+    <div class="divider grey darken-2"></div>
+    <!-- Book Info -->
+    <div class="row mt-3 mb-0">
         <div class="col s12 m4">
             <div class="row center-align">
-                <h3>{{ book.image_url }}</h3>
+                <img class="book-detail-image" src="{{ book.image_url }}">
             </div>
         </div>
-        <div class="col s12 m8">
-            <div class="row center-align">
-                <h2>{{ book }}</h2>
+        <div class="col s11 m6 offset-m1">
+            <div class="row">
+                <p class="mt-0"><strong>Av. Rating:</strong> {{ book.average_rating }}/5.00</p>
+                <p><strong>Author(s):</strong> {{ book.authors }}</p>
+                <p><strong>Year:</strong> {{ book.publication_year }}</p>
+                <p><strong>Editions:</strong> {{ book.books_count }}</p>
+                <p><strong>Language:</strong> {{ book.language_code }}</p>
+                <div>
+                    <ul class="collapsible mt-0 mb-0 sinopsis-display">
+                        <li>
+                            <div class="collapsible-header">
+                                <strong>Sinopsis:</strong>
+                                <span class="light right"><em>&nbsp;&nbsp;Read It Here</em></span>
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nisi sapien,
+                                    finibus dictum sapien tempus et. Nunc ultricies consectetur vulputate. Praesent eget nibh turpis.
+                                    Aenean dictum dolor urna, eu aliquam augue tristique sit amet. Aliquam in laoreet erat.
+                                    Quisque ac urna eget massa rutrum posuere. Duis aliquam enim porttitor, imperdiet nulla quis,
+                                    accumsan lorem. Aenean sed sem et nunc sagittis congue. Etiam non metus nec diam tempus porttitor.
+                                    Integer non congue massa.
+                                </p>
+                                <p>
+                                    Curabitur vel molestie arcu. Praesent ac est at mi volutpat mattis. Quisque magna tellus, imperdiet
+                                    vel tempor non, consequat sed nisi. Sed sodales, est volutpat blandit molestie, odio nibh porttitor
+                                    augue, ut gravida leo diam sagittis mauris. Donec ipsum lectus, molestie cursus neque sed, bibendum
+                                    rutrum neque. Aenean eleifend felis felis, nec lacinia ligula tempor vitae. Maecenas sit amet
+                                    porttitor sem. Praesent blandit dapibus elit id interdum. Phasellus eu orci nisi.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-
+    <div class="divider grey darken-2"></div>
+    <!-- Book Reviews -->
+    <div class="row mb-0 amber lighten-3">
+        <div class="col s12 center-align">
+            <h5>Reviews - ({{ book.ratings_count }})</h5>
+        </div>
+    </div>
+    <!-- Ratings Display -->
+    <div class="row mb-0 pb-1 amber lighten-4">
+        <div class="row mb-0 pb-1 center-align">
+            Average Rating: <strong> {{ book.average_rating }}/5.00 </strong>
+        </div>
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <div class="col s6 right-align">
+                <div class="row mb-0">
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                </div>
+                <div class="row mb-0">
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                </div>
+                <div class="row mb-0">
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                </div>
+                <div class="row mb-0">
+                    <i class="tiny material-icons">star</i>
+                    <i class="tiny material-icons">star</i>
+                </div>
+                <div class="row mb-0">
+                    <i class="tiny material-icons">star</i>
+                </div>
+            </div>
+            <div class="col s5 offset-s1">
+                <div class="row mb-0 meter">
+                    <span class="col s9" id="r5"></span>
+                    <div class="col s2 rating-number">{{ book.ratings_5 }}</div>
+                </div>
+                <div class="row mb-0 meter">
+                    <span class="col s9" id="r4"></span>
+                    <div class="col s2 rating-number">{{ book.ratings_4 }}</div>
+                </div>
+                <div class="row mb-0 meter">
+                    <span class="col s9" id="r3"></span>
+                    <div class="col s2 rating-number">{{ book.ratings_3 }}</div>
+                </div>
+                <div class="row mb-0 meter">
+                    <span class="col s9" id="r2"></span>
+                    <div class="col s2 rating-number">{{ book.ratings_2 }}</div>
+                </div>
+                <div class="row mb-0 meter">
+                    <span class="col s9" id="r1"></span>
+                    <div class="col s2 rating-number">{{ book.ratings_1 }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider grey darken-2 mb-3"></div>
+    <!-- Reviews Loop Display -->
+    <div class="row container">
+        <div class="col s12 m4 l3 center grey-text text-darken-4">
+            <div class="row mb-0">
+                <img class="circle" src="{{ MEDIA_URL }}home-hero.png" height="50px" width="50">
+            </div>
+            <div class="row mb-0">
+                <span class="name">John Doe</span>
+            </div>
+            <div class="row mb-0">
+                <span class="name">User nº reviews</span>
+            </div>
+            <div class="row mb-0">
+                <span class="name">User avg review</span>
+            </div>
+        </div>
+        <div class="col s12 m7 l8 offset-m1 offset-l1">
+            <div class="row mb-0">
+                <span class="date left"><em>date stamp</em></span>
+                <span class="eval right">rating/5.00</span>
+            </div>
+            <div class="row mt-3 mb-0">
+                <span class="text">Review text</span>
+            </div>
+        </div>
+    </div>
+    
 </div>
+<!-- JS inits and meter-bars -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+        var percentage = Math.round((("{{ book.ratings_5 }}"/"{{ book.ratings_count }}") * 100)*1.6) +"%";
+        $('#r5').css({"width": percentage});
+        var percentage = Math.round((("{{ book.ratings_4 }}"/"{{ book.ratings_count }}") * 100)*1.6) +"%";
+        $('#r4').css({"width": percentage});
+        var percentage = Math.round((("{{ book.ratings_3 }}"/"{{ book.ratings_count }}") * 100)*1.6) +"%";
+        $('#r3').css({"width": percentage});
+        var percentage = Math.round((("{{ book.ratings_2 }}"/"{{ book.ratings_count }}") * 100)*1.6) +"%";
+        $('#r2').css({"width": percentage});
+        var percentage = Math.round((("{{ book.ratings_1 }}"/"{{ book.ratings_count }}") * 100)*1.6) +"%";
+        $('#r1').css({"width": percentage});
+    });
+</script>
 {% endblock %}

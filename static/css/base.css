@@ -30,6 +30,10 @@ main {
     margin-bottom: 27px;
 }
 
+.pb-1 {
+    padding-bottom: 10px;
+}
+
 /* AllAuth */
 
 p a {
@@ -99,7 +103,7 @@ form a {
     width: 90%;
 }
 
-/* Products */
+/* Books */
 
 .card-title {
     font-size: 140% !important;
@@ -136,6 +140,50 @@ form a {
     color: #ffe082;
 }
 
+/* Book Details */
+
+.book-detail-image {
+    height: 250px;
+}
+
+.sinopsis-display {
+    border: none;
+    box-shadow: none;
+}
+
+.collapsible-header {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.collapsible-body {
+    border: none;
+    text-align: justify;
+    padding: 15px;
+}
+
+/* meter bars for ratings based on: https://css-tricks.com/css3-progress-bars/ */
+.meter {
+    color: #212121;
+    font-style: italic;
+    height: 20px;
+    width:100%;
+    margin-bottom: 1.6px;
+	position: relative;
+	background: transparent;
+}
+
+.meter > span {
+    display: block;
+    height: 100%;
+    background-color: #212121;
+}
+
+.rating-number {
+    display: none;
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
@@ -169,6 +217,10 @@ form a {
 @media screen and (min-width: 480px) {
     .header-wrapper {
         min-height: auto;
+    }
+
+    .rating-number {
+        display: block;
     }
 }
 

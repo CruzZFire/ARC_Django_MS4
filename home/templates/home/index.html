@@ -28,7 +28,7 @@
 		<div class="row slogan-cta mb-0 center-align valign-wrapper">
 			<div class="row slogan-cta-distributor">
 				<div class="col s12 l6">
-					<div class="row">
+					<div class="row mb-0">
 						<h6 class="grey-text text-darken-4">
 							Are you always trying to discover new writers? Are you a writer yourself and need your book
 							reviewed?
@@ -148,7 +148,9 @@
 <script>
 	$(document).ready(function () {
 		$('.parallax').parallax();
-		$('.carousel').carousel();
+		$('.carousel').carousel({
+			indicators: "True"
+		});
 	});
 </script>
 {% endblock %}
