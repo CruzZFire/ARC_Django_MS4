@@ -3,16 +3,16 @@
 
 {% block content %}
 <div class="container">
-
+    <!-- Search Form Section -->
     <div class="row mt-3 mb-0">
         <form class="col s12 grey-text text-darken-4">
             <div class="row center-align">
-                <div class="input-field col s10 m9">
-                <i class="material-icons prefix">library_books</i>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix">Search by Author or Title</label>
+                <div class="input-field col s10">
+                    <i class="material-icons prefix">library_books</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Search by Author or Title</label>
                 </div>
-                <div class="input-field col s2 m3">
+                <div class="input-field col s2 right-align">
                     <button type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
                         <div class="row valign-wrapper">
                             <span class="hide-on-small-only">Search </span>
@@ -23,16 +23,16 @@
             </div>
         </form>
     </div>
-
+    <!-- Book Cards Loop -->
     <div class="row">
-        {% for book in books %}
-        <div class="col s12 m4 l3">
-            <div class="card medium grey darken-4">
-                <div class="card-image waves-effect waves-block waves-light text-center">
+        {% for book in paginated_books %}
+        <div class="col s12 m4 l3 card-full-div">
+            <div class="card medium grey darken-4 hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator" src="{{ book.image_url }}">
                 </div>
                 <div class="card-content amber-text text-lighten-3">
-                    <span class="card-title activator truncate"><strong>{{ book.title }}</strong>
+                    <span class="card-title truncate activator"><strong>{{ book.title }}</strong>
                         <i class="material-icons right">more_vert</i>
                     </span>
                     <span>
@@ -55,6 +55,38 @@
             </div>
         </div>
         {% endfor %}
+        <!-- Pagination Section -->
+        <ul class="col s12 pagination center-align">
+            {% if paginated_books.has_previous %}
+            <li class="mt-3">
+                <a href="?{{ page_request }}={{ paginated_books.previous_page_number }}">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+            <li class="waves-effect mt-3">
+                <a href="?{{ page_request }}={{ paginated_books.previous_page_number }}">
+                    {{ paginated_books.previous_page_number }}
+                </a>
+            </li>
+            {% endif %}
+            <li class="active mt-3">
+                <a href="?{{ page_request }}={{ paginated_books.number }}">
+                    {{ paginated_books.number }}
+                </a>
+            </li>
+            {% if paginated_books.has_next %}
+            <li class="waves-effect mt-3">
+                <a href="?{{ page_request }}={{ paginated_books.next_page_number }}">
+                    {{ paginated_books.next_page_number }}
+                </a>
+            </li>
+            <li class="waves-effect mt-3">
+                <a href="?{{ page_request }}={{ paginated_books.next_page_number }}">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>        
     </div>
 
 </div>

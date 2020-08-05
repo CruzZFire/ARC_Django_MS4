@@ -101,6 +101,10 @@ form a {
 
 /* Products */
 
+.card-title {
+    font-size: 140% !important;
+}
+
 .card-image {
     min-height: 70%;
 }
@@ -118,6 +122,18 @@ form a {
     position: absolute;
     right: 5px;
     top: 5px;
+}
+
+.pagination li a {
+    color: #212121;
+}
+
+.pagination li.active {
+    background-color: #212121;
+}
+
+.pagination li.active a {
+    color: #ffe082;
 }
 
 /* ------------------------------- bootstrap toasts */
@@ -138,6 +154,17 @@ form a {
 }
 
 /* -------------- Media Queries -------------- */
+
+@media screen and (max-width: 600px) {
+    .card-full-div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        width: 250px;
+    }
+}
 
 @media screen and (min-width: 480px) {
     .header-wrapper {
