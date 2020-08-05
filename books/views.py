@@ -1,14 +1,16 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 from .models import Book
 
 
 def all_books(request):
-    """" A view for all books page, filter and sort functions """
+    """" A view for all books page, search/filter function """
     books = Book.objects.all().order_by('title')
+
     paginator = Paginator(books, 24)
     page_request = 'page'
     page = request.GET.get(page_request)
@@ -25,6 +27,28 @@ def all_books(request):
     }
     
     return render(request, 'books/books.html', context)
+
+
+
+def search_books(request):
+    """" A view for searched books """
+    books = Book.objects.all().order_by('title')
+    query = request.GET.get('book_search')
+    if query:
+        search_books = books.filter(
+            Q(title__icontains=query) |
+            Q(authors__icontains=query)
+        ).distinct()
+
+    results = search_books.count()
+
+    context = {
+        "search_books": search_books,
+        "results": results,
+        "query": query,
+    }
+    
+    return render(request, 'books/book_search.html', context)
 
 
 def book_detail(request, book_id):

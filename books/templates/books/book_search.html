@@ -6,11 +6,11 @@
     <!-- Search Form Section -->
     <div class="row mt-3 mb-0">
         <form action="{% url 'search_books' %}" class="col s12 grey-text text-darken-4" method="GET">
-            <div class="row center-align">
+            <div class="row mb-0 center-align">
                 <div class="input-field col s10">
                     <i class="material-icons prefix">library_books</i>
                     <input id="book_search" type="text" class="validate" name="book_search">
-                    <label for="book_search">Search by Author or Title</label>
+                    <label for="book_search">Search Again</label>
                 </div>
                 <div class="input-field col s2 right-align">
                     <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
@@ -23,9 +23,15 @@
             </div>
         </form>
     </div>
+    <!-- Search Info Display -->
+    <div class="row mb-0 mt-0 center-align">
+        <h6 class="header col s12 amber lighten-3 grey-text text-darken-4 parallax-slogan">
+            Showing <strong>{{ results }}</strong> books for <strong>"{{ query }}"</strong>.
+        </h6>
+    </div>
     <!-- Book Cards Loop -->
     <div class="row">
-        {% for book in paginated_books %}
+        {% for book in search_books %}
         <div class="col s12 m4 l3 card-full-div">
             <div class="card medium grey darken-4 hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -55,50 +61,37 @@
             </div>
         </div>
         {% endfor %}
-        <!-- Pagination Section -->
-        <ul class="col s12 pagination center-align">
-            {% if paginated_books.has_previous %}
-            <li class="mt-3">
-                <a href="?{{ page_request }}={{ paginated_books.previous_page_number }}">
-                    <i class="material-icons">chevron_left</i>
-                </a>
-            </li>
-            <li class="waves-effect mt-3">
-                <a href="?{{ page_request }}={{ paginated_books.previous_page_number }}">
-                    {{ paginated_books.previous_page_number }}
-                </a>
-            </li>
-            {% endif %}
-            <li class="active mt-3">
-                <a href="?{{ page_request }}={{ paginated_books.number }}">
-                    {{ paginated_books.number }}
-                </a>
-            </li>
-            {% if paginated_books.has_next %}
-            <li class="waves-effect mt-3">
-                <a href="?{{ page_request }}={{ paginated_books.next_page_number }}">
-                    {{ paginated_books.next_page_number }}
-                </a>
-            </li>
-            <li class="waves-effect mt-3">
-                <a href="?{{ page_request }}={{ paginated_books.next_page_number }}">
-                    <i class="material-icons">chevron_right</i>
-                </a>
-            </li>
-            {% endif %}
-        </ul>        
     </div>
+    <!-- Buttons Section -->
+    <div class="row center-align">
+        <div class="col s6">
+            <a href="{% url 'all_books' %}" class="waves-effect waves-light btn-small grey darken-4 amber-text text-lighten-3">
+                <div class="row valign-wrapper">
+                    <span class="hide-on-small-only">All Books</span>
+                    <i class="material-icons">library_books</i>
+                </div>
+            </a>
+        </div>
+        <div class="col s6">
+            <a href="#top" class="waves-effect waves-light btn-small grey darken-4 amber-text text-lighten-3">
+                <div class="row valign-wrapper">
+                    <span class="hide-on-small-only">Back to Top</span>
+                    <i class="material-icons">vertical_align_top</i>
+                </div>
+            </a>
+        </div>
+    </div>    
 </div>
 
 <!-- JS options and inits -->
 <script type="text/javascript">
-        $("#search_button").on("click", function() {
-            var query = $("#book_search").val();
-        
-            if ($.trim(query) === '') {
-                return false;
-            }
-        });
+    $("#search_button").on("click", function() {
+        var query = $("#book_search").val();
+    
+        if ($.trim(query) === '') {
+            return false;
+        }
+    });
 </script>
 
 {% endblock %}
