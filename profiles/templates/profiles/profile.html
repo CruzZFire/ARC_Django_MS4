@@ -2,5 +2,89 @@
 {% load static %}
 
 {% block content %}
-{{ user }}
+<div class="container grey-text text-darken-4">
+    <!-- Profile Info -->
+    <div class="row mt-3 mb-0">
+        <div class="col s12 m6">
+            <div class="row mb-0 center-align">
+                <img class="circle grey" src="{{ user.profile_pic }}" height="150px" width="150">
+            </div>
+        </div>
+        <div class="col s11 offset-s1 m5 offset-m1">
+            <div class="row">
+                <p><strong>Username:</strong> {{ profile.user.username }}</p>
+                <p><strong>E-mail:</strong> {{ profile.user.email }}</p>
+                <p><strong>Top Reader:</strong> #{{ profile.read_rank }}</p>
+                <p><strong>Top Reviewer:</strong> #{{ profile.review_rank }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- Reserved Books Section Header -->
+    <div class="row mb-0 grey darken-4 reserved-books-section">
+        <div class="col s12 valign-wrapper amber-text text-lighten-3">
+            <h5 class="col s6 center-align">Reserved Reads</h5>
+            <h6 class="col s6 right-align">
+                <a class="amber-text text-darken-3" href="">
+                    <em>Change Books</em>
+                    <i class="tiny material-icons">edit</i>
+                </a>
+            </h6>
+        </div>
+    </div>
+    <!-- Reserved Books Display -->
+    <div class="row mb-0 pb-1 grey darken-3 reserved-books-section">            
+        {% for book in user.asked_books %}
+            <div class="col s12 m6 l3 center-align">
+                <img src="{{ book.book.image_url}}" height="180px">
+            </div>
+        {% endfor %}
+        {% for i in "1234" %}
+            <div class="col s12 m6 l3 mt-3 pb-1 center-align">
+                <div class="row mb-0">
+                    <a href="">
+                        <img src="{{ MEDIA_URL }}missingbook.png" height="180px">
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="divider grey darken-2 mb-3"></div>
+    <!-- Reviews Loop Display -->
+    <div class="row">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header valign-wrapper amber lighten-3 collapsible-header-preview">
+                    <div class="col s8 truncate">
+                        <i class="material-icons left">arrow_drop_down</i>
+                        <strong>Book Title {{ review.book.title }}</strong>
+                    </div>
+                    <div class="col s4 right-align">
+                        <em>Rating: {{ review.rating }}/5.00</em>
+                    </div>
+                </div>
+                <div class="collapsible-body amber lighten-4 collapsible-body-preview">
+                    <span class="row profile-reviews-text">
+                        {{ review.text }}
+                        Review TextReview TextReview TextReview TextReview TextReview Text
+                        Review TextReview TextReview TextReview TextReview TextReview Text
+                        Review TextReview TextReview TextReview TextReview TextReview Text
+                        Review TextReview TextReview TextReview TextReview TextReview Text
+                    </span>
+                    <span class="row right-align">
+                        <a class="col s12 mt-3 amber-text text-darken-3" href="">
+                            <em>Edit Review</em>
+                            <i class="tiny material-icons">edit</i>
+                        </a>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- JS inits and meter-bars -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+</script>
 {% endblock %}

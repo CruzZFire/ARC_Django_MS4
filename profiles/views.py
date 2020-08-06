@@ -3,7 +3,7 @@ from .models import UserProfile
 from books.models import Book
 
 
-def add_to_books(request, book_id):
+""" def add_to_books(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     redirect_url = request.POST.get('redirect_url')
     owned_books = UserProfile.asked_books
@@ -14,7 +14,7 @@ def add_to_books(request, book_id):
         owned_books.append({book_id: book.image_url})
 
     UserProfile.asked_books = owned_books
-    return redirect(redirect_url)
+    return redirect(redirect_url) """
 
 
 def profile(request):
@@ -22,7 +22,7 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     context = {
-        "user": profile,
+        "profile": profile,
     }
 
     return render(request, 'profiles/profile.html', context)
