@@ -45,11 +45,15 @@
                         <a href="" class="amber-text text-lighten-3">Top Listings</a>
                     </li>
                     <li class="amber lighten-3">
-                        <a href="" class="grey-text text-darken-4"><strong>Promote Me!</strong></a>
+                        <a href="{% url 'subscriptions' %}" class="grey-text text-darken-4"><strong>Promote Me!</strong></a>
                     </li>
                     <!-- SideNav Trigger -->
                     <li>
+                        {% if user.is_authenticated %}
+                        <a class="sidenav-trigger show-on-large amber-text text-lighten-3" href="#" data-target="slide-out">Side Profile</a>
+                        {% else %}
                         <a class="sidenav-trigger show-on-large amber-text text-lighten-3" href="#" data-target="slide-out">SignIn/Up</a>
+                        {% endif %}
                     </li>
                 </ul>
                 <a href="#" data-target="slide-out" class="sidenav-trigger">
@@ -59,6 +63,7 @@
         </nav>
         <!-- SideNav Contents -->
         <ul id="slide-out" class="sidenav amber lighten-5">
+            {% if user.is_authenticated %}
             <li>
                 <div class="user-view">
                     <div class="background">
@@ -70,7 +75,7 @@
                 </div>
             </li>
             <li>
-                <a class="waves-effect grey-text text-darken-4" href="#!">
+                <a class="waves-effect grey-text text-darken-4" href="{% url 'profile' %}">
                     My Profile
                 </a>
             </li>
@@ -87,8 +92,17 @@
             <li>
                 <div class="divider grey darken-4"></div>
             </li>
+            {% else %}
             <li>
-                <a class="waves-effect grey-text text-darken-4" href="#!">
+                <div class="container mt-3 mb-3 center grey darken-4">
+                    <a class="waves-effect amber-text text-lighten-3" href="{% url 'account_login' %}">
+                        Log In
+                    </a>
+                </div>
+            </li>
+            {% endif %}
+            <li>
+                <a class="waves-effect grey-text text-darken-4" href="{% url 'all_books' %}">
                     Browse All Books
                 </a>
             </li>
@@ -98,10 +112,24 @@
                 </a>
             </li>
             <li>
-                <a class="waves-effect grey darken-4 amber-text text-lighten-3 sans-pro-font" href="#!">
+                <a class="waves-effect grey darken-4 amber-text text-lighten-3 sans-pro-font" href="{% url 'subscriptions' %}">
                     <strong>Promote Me!</strong>
                 </a>
             </li>
+            <li>
+                <a class="waves-effect grey-text text-darken-4" href="{% url 'home' %}">
+                    Home Page
+                </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="mt-3">
+                <div class="center mt-3">
+                    <a class="waves-effect grey-text text-darken-4" href="{% url 'account_logout' %}">
+                        <em>Log Out</em>
+                    </a>
+                </div>
+            </li>
+            {% endif %}
         </ul>
     </header>
     

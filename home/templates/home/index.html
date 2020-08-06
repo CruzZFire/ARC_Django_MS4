@@ -39,6 +39,14 @@
 				</div>
 				<div class="col s12 l5 offset-l1 mt-3">
 					<div class="row">
+						{% if user.is_authenticated %}
+						<div class="col s12">
+							<a href="{% url 'profile' %}" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+								<i class="material-icons left amber-text text-lighten-3">account_circle</i>
+								<span>Check Your Profile</span>
+							</a>
+						</div>
+						{% else %}
 						<div class="col s6">
 							<a href="{% url 'account_signup' %}" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
 								<i class="material-icons left amber-text text-lighten-3">chrome_reader_mode</i>
@@ -51,6 +59,7 @@
 								<span>Writer</span>
 							</a>
 						</div>
+						{% endif %}
 					</div>
 				</div>
 			</div>
