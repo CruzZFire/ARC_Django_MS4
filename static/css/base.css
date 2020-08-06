@@ -66,7 +66,7 @@ form a {
     width: 240px;
 }
 
-/* Index */
+/* Home */
 
 .parallax-top {
     height: 381px;
@@ -151,13 +151,13 @@ form a {
     box-shadow: none;
 }
 
-.collapsible-header {
+.collapsible-header-bdetails { 
     background-color: transparent;
     border: none;
     padding: 0;
 }
 
-.collapsible-body {
+.collapsible-body-bdetails {
     border: none;
     text-align: justify;
     padding: 15px;
@@ -184,21 +184,27 @@ form a {
     display: none;
 }
 
-/* ------------------------------- bootstrap toasts */
+/* Profile */
 
-.message-container {
-    position: fixed;
-    top: 72px;
-    right: 15px;
-    z-index: 99999999999;
+.reserved-books-section {
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.14),
+                0 5px 1px -2px rgba(0,0,0,0.12),
+                0 1px 5px 0 rgba(0,0,0,0.2);
 }
 
-.custom-toast {
-    overflow: visible;
+.collapsible {
+    border: none;
 }
 
-.toast-capper {
-    height: 2px;
+.collapsible-header-preview {
+    border: none;
+    padding: 8px;
+}
+
+.collapsible-body-preview {
+    border: none;
+    padding: 15px;
+    text-align: justify;
 }
 
 /* -------------- Media Queries -------------- */
