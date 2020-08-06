@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import redirect, render, reverse, get_object_or_404
 from .models import UserProfile
 from books.models import Book
 
@@ -27,6 +27,7 @@ def profile(request):
 
     return render(request, 'profiles/profile.html', context)
 
-def user_reviews(request):
-    """" A view for index page """
+
+def ask_book(request, book_id):
+    
     return render(request, 'home/index.html')

@@ -29,7 +29,6 @@ def all_books(request):
     return render(request, 'books/books.html', context)
 
 
-
 def search_books(request):
     """" A view for searched books """
     books = Book.objects.all().order_by('title')

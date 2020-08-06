@@ -17,8 +17,8 @@
                 <img class="book-detail-image" src="{{ book.image_url }}">
             </div>
         </div>
-        <div class="col s11 m6 offset-m1">
-            <div class="row">
+        <div class="col s12 m8">
+            <div class="row pl-3">
                 <p class="mt-0"><strong>Av. Rating:</strong> {{ book.average_rating }}/5.00</p>
                 <p><strong>Author(s):</strong> {{ book.authors }}</p>
                 <p><strong>Year:</strong> {{ book.publication_year }}</p>
@@ -52,6 +52,11 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div class="center-align mt-3">
+                <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'ask_book' book.book_id %}">
+                    Ask for the Book
+                </a>
             </div>
         </div>
     </div>
