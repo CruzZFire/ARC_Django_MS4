@@ -38,6 +38,10 @@ main {
     padding-left: 27px;
 }
 
+.pr-3 {
+    padding-right: 27px;
+}
+
 /* AllAuth */
 
 p a {
@@ -190,6 +194,10 @@ form a {
     display: none;
 }
 
+.review-user {
+    border-right: 1px solid #212121;
+}
+
 .new-comment-form {
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.14),
                 0 5px 1px -2px rgba(0,0,0,0.12),
@@ -225,6 +233,7 @@ form a {
 
 .collapsible-header-preview {
     border: none;
+    border-bottom: 1px solid #212121;
     padding: 8px;
 }
 
@@ -244,6 +253,10 @@ form a {
 
     .card {
         width: 250px;
+    }
+
+    .review-user {
+        border: none;
     }
 }
 

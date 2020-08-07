@@ -15,5 +15,5 @@ class Review(models.Model):
     rating = models.IntegerField(choices=rate_choice)
     value_count = models.IntegerField(default=0)
 
-    def __str__(self):
+    def __int__(self):
         return self.review_id

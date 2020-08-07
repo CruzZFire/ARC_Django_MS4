@@ -27,4 +27,4 @@ class Book(models.Model):
 
     @property
     def get_reviews(self):
-        return self.reviews.all().order_by('datestamp')[0:4]
+        return self.reviews.all().order_by('-review_id')[0:3]

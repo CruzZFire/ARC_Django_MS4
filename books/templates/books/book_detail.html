@@ -126,39 +126,52 @@
     </div>
     <div class="divider grey darken-2 mb-3"></div>
     <!-- Reviews Loop Display -->
-    {% if book.reviews %}
+    <div class="row mb-0 center-align">
+        <h5>Lastest Reviews {% if book.get_reviews %}<em>(max. 3)</em>{% endif %}</h5>
+    </div>
+    {% if book.get_reviews %}
     {% for review in book.get_reviews %}
-    <div class="row">
-        <div class="col s12 m4 l3 center grey-text text-darken-4">
+    <div class="divider amber lighten-3"></div>
+    <div class="row mt-3">
+        <div class="col s12 m4 l3 center grey-text text-darken-4 review-user">
             <div class="row mb-0">
                 <img class="circle" src="{{ MEDIA_URL }}home-hero.png" height="50" width="50" alt="profile-pic">
             </div>
             <div class="row mb-0">
-                <span class="name">John Doe</span>
+                <span class="name">{{ review.user.username }}</span>
             </div>
             <div class="row mb-0">
-                <span class="name">User nº reviews</span>
+                <span class="name">Nº Reviews: </span>
             </div>
             <div class="row mb-0">
-                <span class="name">User avg review</span>
+                <span class="name">Avg. Rating: </span>
             </div>
         </div>
         <div class="col s12 m7 l8 offset-m1 offset-l1">
             <div class="row mb-0">
-                <span class="date left"><em>date stamp</em></span>
-                <span class="eval right">rating/5.00</span>
+                <span class="left"><em>{{ review.datestamp }}</em></span>
+                <span class="pr-3 right">{{ review.rating }}/5.00</span>
             </div>
             <div class="row mt-3 mb-0">
-                <span class="text">Review text</span>
+                <span class="text">{{ review.review_text }}</span>
             </div>
         </div>
     </div>
     {% endfor %}
+    <div class="mb-3 center-align">
+        <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'book_reviews' book.book_id %}">
+            See All Reviews
+        </a>
+    </div>
+    {% else %}
+    <div class="row center-align">
+        <h6><em>This book has no reviews yet...</em></h6>
+    </div>
     {% endif %}
     <!-- New Comment Gap -->
     {% if user.is_authenticated %}
     <div class="row mt-3 center-align new-comment-form">
-        <form class="container" action="{% url 'ask_book' book.book_id %}" method="POST">
+        <form class="container" action="." method="POST">
             {% csrf_token %}
             {{ form }}
             <div class="mt-3">

@@ -3,43 +3,74 @@
 
 {% block content %}
 <div class="container grey-text text-darken-4">
-    <!-- Book Title -->
+    <!-- User Username -->
     <div class="row mb-0">
         <div class="col s12 center">
-            <h4><strong>{{ user.username }}'s Reviews</strong></h4>
+            <h4><strong>{{ user }} - All Reviews</strong></h4>
         </div>
     </div>
+    <!-- Filter Form Section -->
+    <div class="row mt-3 mb-0">
+        <form action="." class="col s12 grey-text text-darken-4" method="GET">
+            <div class="row">
+                <div class="input-field col s8 m4 offset-m4 center-align">
+                    <select>
+                        <option value="" disabled selected>Rating</option>
+                        <option value="1">Option 1</option>
+                    </select>
+                    <label>Filter by Rating</label>
+                </div>
+                <div class="input-field col s4 right-align">
+                    <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+                        <span class="row valign-wrapper">
+                            <span class="hide-on-small-only">Filter </span>
+                            <i class="material-icons">filter_list</i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
     <!-- Reviews Loop Display -->
+    {% if user_reviews_found %}
+    {% for review in user_reviews_by_time %}
+    <div class="divider amber lighten-3"></div>
     <div class="row mt-3">
-        <div class="col s12 m4 l3 center grey-text text-darken-4">
+        <div class="col s12 m4 l3 center grey-text text-darken-4 review-user">
             <div class="row mb-0">
                 <img class="circle" src="{{ MEDIA_URL }}home-hero.png" height="50" width="50" alt="profile-pic">
             </div>
             <div class="row mb-0">
-                <span class="name">John Doe</span>
+                <span class="name">{{ review.user.user.username }}</span>
             </div>
             <div class="row mb-0">
-                <span class="name">User nº reviews</span>
+                <span class="name">Nº Reviews: </span>
             </div>
             <div class="row mb-0">
-                <span class="name">User avg review</span>
+                <span class="name">Avg. Rating: </span>
             </div>
         </div>
         <div class="col s12 m7 l8 offset-m1 offset-l1">
             <div class="row mb-0">
-                <span class="date left"><em>date stamp</em></span>
-                <span class="eval right">rating/5.00</span>
+                <span class="left"><em>{{ review.datestamp }}</em></span>
+                <span class="pr-3 right">{{ review.rating }}/5.00</span>
             </div>
             <div class="row mt-3 mb-0">
-                <span class="text">Review text</span>
+                <span class="text">{{ review.review_text }}</span>
             </div>
         </div>
     </div>
+    {% endfor %}
+    {% else %}
+    <div class="row center-align">
+        <h6><em>You haven't reviewed yet...</em></h6>
+    </div>
+    {% endif %}
 </div>
 <!-- JS inits and meter-bars -->
-<script type="text/javascript">
+<script>
     $(document).ready(function(){
-
+        $('select').formSelect();
     });
 </script>
 {% endblock %}
