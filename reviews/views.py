@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from .models import Review
 from books.models import Book
 from profiles.models import UserProfile
 
