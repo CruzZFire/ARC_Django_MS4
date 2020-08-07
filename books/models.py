@@ -24,3 +24,7 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def get_reviews(self):
+        return self.reviews.all().order_by('datestamp')[0:4]

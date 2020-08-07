@@ -53,7 +53,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="center-align mt-3">
+            <div class="center-align mb-3">
                 <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'ask_book' book.book_id %}">
                     Ask for the Book
                 </a>
@@ -126,7 +126,9 @@
     </div>
     <div class="divider grey darken-2 mb-3"></div>
     <!-- Reviews Loop Display -->
-    <div class="row container">
+    {% if book.reviews %}
+    {% for review in book.get_reviews %}
+    <div class="row">
         <div class="col s12 m4 l3 center grey-text text-darken-4">
             <div class="row mb-0">
                 <img class="circle" src="{{ MEDIA_URL }}home-hero.png" height="50px" width="50">
@@ -151,12 +153,27 @@
             </div>
         </div>
     </div>
-    
-</div>
+    {% endfor %}
+    {% endif %}
+    <!-- New Comment Gap -->
+    {% if user.is_authenticated %}
+    <div class="row mt-3 center-align new-comment-form">
+        <form class="container" action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <div class="mt-3">
+                <button type="submit" class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'ask_book' book.book_id %}">
+                    Send Review
+                </button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
 <!-- JS inits and meter-bars -->
 <script type="text/javascript">
     $(document).ready(function(){
         $('.collapsible').collapsible();
+        $('select').formSelect();
         var percentage = Math.round((("{{ book.ratings_5 }}"/"{{ book.ratings_count }}") * 100)) +"%";
         $('#r5').css({"width": percentage});
         var percentage = Math.round((("{{ book.ratings_4 }}"/"{{ book.ratings_count }}") * 100)) +"%";
