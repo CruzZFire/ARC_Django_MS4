@@ -34,6 +34,10 @@ main {
     padding-bottom: 10px;
 }
 
+.pl-3 {
+    padding-left: 27px;
+}
+
 /* AllAuth */
 
 p a {
@@ -166,6 +170,7 @@ form a {
 /* meter bars for ratings based on: https://css-tricks.com/css3-progress-bars/ */
 .meter {
     color: #212121;
+    font-size: 14px;
     font-style: italic;
     height: 20px;
     width:100%;
@@ -175,13 +180,35 @@ form a {
 }
 
 .meter > span {
+    background-color: #212121;
     display: block;
     height: 100%;
-    background-color: #212121;
+    padding: 0 !important;
 }
 
 .rating-number {
     display: none;
+}
+
+.new-comment-form {
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.14),
+                0 5px 1px -2px rgba(0,0,0,0.12),
+                0 1px 5px 0 rgba(0,0,0,0.2);
+    padding: 25px;
+}
+
+.new-comment-form li>span {
+    color: #212121;
+    font-style: italic;
+}
+
+.new-comment-form .select-wrapper,
+.new-comment-form .select-wrapper input,
+.new-comment-form .select-wrapper ul,
+.new-comment-form .select-wrapper li {
+    margin: 0 auto;
+    max-width: 100px;
+    text-align: center;
 }
 
 /* Profile */
