@@ -14,7 +14,7 @@
 			</div>
 			<div class="carousel">
 				{% for item in promoted %}
-				<a class="carousel-item" href="{% url 'book_detail' item.book_id %}"><img src="{{ item.image_url }}"></a>
+				<a class="carousel-item" href="{% url 'book_detail' item.book_id %}"><img src="{{ item.image_url }}" alt="book-cover"></a>
 				{% endfor %}
 			</div>
 		</div>

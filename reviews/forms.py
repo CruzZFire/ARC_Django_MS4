@@ -9,7 +9,7 @@ class ReviewForm(forms.ModelForm):
         'placeholder': "Leave a New Review",
     }), label='New Review')
 
-    rate_choice = [('', 'Rate It'), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),]
+    rate_choice = [('', 'Rate It'), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), ]
     rating = forms.IntegerField(widget=forms.Select(choices=rate_choice),
                                 label='')
 

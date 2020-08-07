@@ -27,7 +27,7 @@ def all_books(request):
         "paginated_books": paginated_books,
         "page_request": page_request,
     }
-    
+
     return render(request, 'books/books.html', context)
 
 
@@ -48,7 +48,7 @@ def search_books(request):
         "results": results,
         "query": query,
     }
-    
+
     return render(request, 'books/book_search.html', context)
 
 

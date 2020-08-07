@@ -10,7 +10,7 @@ def book_reviews(request, book_id):
     books = Book.objects.get(book_id=book_id)
 
     context = {
-        "book" : books,
+        "book": books,
     }
 
     return render(request, 'reviews/book_reviews.html', context)
@@ -21,7 +21,7 @@ def user_reviews(request, username):
     user = UserProfile.objects.get(user__username=username)
 
     context = {
-        "user" : user,
+        "user": user,
     }
 
     return render(request, 'reviews/user_reviews.html')

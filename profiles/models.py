@@ -22,5 +22,5 @@ class AskBook(models.Model):
 
 @receiver(user_signed_up)
 def profile_creation(sender, **kwargs):
-    profile = UserProfile(user = kwargs['user'])
+    profile = UserProfile(user=kwargs['user'])
     profile.save()

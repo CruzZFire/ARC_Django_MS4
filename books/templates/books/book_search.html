@@ -14,10 +14,10 @@
                 </div>
                 <div class="input-field col s2 right-align">
                     <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
-                        <div class="row valign-wrapper">
+                        <span class="row valign-wrapper">
                             <span class="hide-on-small-only">Search </span>
                             <i class="material-icons">search</i>
-                        </div>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -35,7 +35,7 @@
         <div class="col s12 m4 l3 card-full-div">
             <div class="card medium grey darken-4 hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{ book.image_url }}">
+                    <img class="activator" src="{{ book.image_url }}" alt="book-cover">
                 </div>
                 <div class="card-content amber-text text-lighten-3">
                     <span class="card-title truncate activator"><strong>{{ book.title }}</strong>
@@ -84,7 +84,7 @@
 </div>
 
 <!-- JS options and inits -->
-<script type="text/javascript">
+<script>
     $("#search_button").on("click", function() {
         var query = $("#book_search").val();
     
