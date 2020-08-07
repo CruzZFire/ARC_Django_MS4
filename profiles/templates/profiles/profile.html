@@ -50,35 +50,51 @@
     </div>
     <div class="divider grey darken-2 mb-3"></div>
     <!-- Reviews Loop Display -->
-    <div class="row">
+    <div class="row mb-0 center-align">
+        <h5>Lastest Reviews -
+            {% if user_reviews_short %}
+            <em>(showing {{ short_reviews_count }}/{{ user_reviews_count }})</em>
+            {% endif %}
+        </h5>
+    </div>
+    <div class="row mb-0">
+        {% if user_reviews_short %}
         <ul class="collapsible">
+            {% for review in user_reviews_short %}
             <li>
                 <div class="collapsible-header valign-wrapper amber lighten-3 collapsible-header-preview">
                     <div class="col s8 truncate">
                         <i class="material-icons left">arrow_drop_down</i>
-                        <strong>Book Title {{ review.book.title }}</strong>
+                        <strong>{{ review.book.title }}</strong> - <em>{{ review.datestamp }}</em>
                     </div>
                     <div class="col s4 right-align">
                         <em>Rating: {{ review.rating }}/5.00</em>
                     </div>
                 </div>
                 <div class="collapsible-body amber lighten-4 collapsible-body-preview">
-                    <span class="row profile-reviews-text">
-                        {{ review.text }}
-                        Review TextReview TextReview TextReview TextReview TextReview Text
-                        Review TextReview TextReview TextReview TextReview TextReview Text
-                        Review TextReview TextReview TextReview TextReview TextReview Text
-                        Review TextReview TextReview TextReview TextReview TextReview Text
-                    </span>
-                    <span class="row right-align">
-                        <a class="col s12 mt-3 amber-text text-darken-3" href="">
+                    <div class="row">
+                        {{ review.review_text }}
+                    </div>
+                    <span class="row">
+                        <a class="col s4 offset-s8 amber-text text-darken-3 center" href="">
                             <em>Edit Review</em>
                             <i class="tiny material-icons">edit</i>
                         </a>
                     </span>
                 </div>
             </li>
+            {% endfor %}
         </ul>
+        <div class="mb-3 center-align">
+            <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'user_reviews' user.username %}">
+                See All My Reviews
+            </a>
+        </div>
+        {% else %}
+        <div class="row center-align">
+            <h6><em>You haven't reviewed yet...</em></h6>
+        </div>
+        {% endif %}
     </div>
 </div>
 <!-- JS inits and meter-bars -->
