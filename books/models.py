@@ -27,4 +27,5 @@ class Book(models.Model):
 
     @property
     def get_reviews(self):
-        return self.reviews.all().order_by('-review_id')[0:3]
+        book_rw_short = self.reviews.all().order_by('-review_id')[0:3]
+        return book_rw_short

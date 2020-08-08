@@ -3,30 +3,62 @@
 
 {% block content %}
 <div class="container grey-text text-darken-4">
-    <!-- User Username -->
-    <div class="row mb-0">
+    <!-- User and Info -->
+    <div class="row mb-0 mt-3">
         <div class="col s12 center">
-            <h4><strong>{{ user }} - All Reviews</strong></h4>
+            <div class="col s12 center grey-text text-darken-4">
+                <div class="row mb-0">
+                    <img class="circle" src="{{ MEDIA_URL }}home-hero.png" height="150" width="150" alt="profile-pic">
+                </div>
+                <div class="row mb-0">
+                    <h5 class="name">{{ reviewer.user.username }}</h5>
+                </div>
+                <div class="row mb-0">
+                    <h6 class="name">Nº Reviews: {{ reviewer.reviews_total }}</h6>
+                </div>
+                <div class="row mb-0">
+                    <h6 class="name">Avg. Rating: {{ reviewer.rating_avg }}</h6>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Filter Form Section -->
     <div class="row mt-3 mb-0">
         <form action="." class="col s12 grey-text text-darken-4" method="GET">
-            <div class="row">
-                <div class="input-field col s8 m4 offset-m4 center-align">
-                    <select>
-                        <option value="" disabled selected>Rating</option>
-                        <option value="1">Option 1</option>
-                    </select>
-                    <label>Filter by Rating</label>
+            <div class="row center-align">
+                <div class="col s12 m6">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>By Date</option>
+                            <option value="1">Option 1</option>
+                        </select>
+                        <label>Sort by Date</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+                            <span class="row valign-wrapper">
+                                <span class="hide-on-small-only">Sort </span>
+                                <i class="material-icons">sort</i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
-                <div class="input-field col s4 right-align">
-                    <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
-                        <span class="row valign-wrapper">
-                            <span class="hide-on-small-only">Filter </span>
-                            <i class="material-icons">filter_list</i>
-                        </span>
-                    </button>
+                <div class="col s12 m6">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Rating</option>
+                            <option value="1">Option 1</option>
+                        </select>
+                        <label>Filter by Rating</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+                            <span class="row valign-wrapper">
+                                <span class="hide-on-small-only">Filter </span>
+                                <i class="material-icons">filter_alt</i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -34,23 +66,9 @@
     <!-- Reviews Loop Display -->
     {% if user_reviews_found %}
     {% for review in user_reviews_by_time %}
-    <div class="divider amber lighten-3"></div>
-    <div class="row mt-3">
-        <div class="col s12 m4 l3 center grey-text text-darken-4 review-user">
-            <div class="row mb-0">
-                <img class="circle" src="{{ MEDIA_URL }}home-hero.png" height="50" width="50" alt="profile-pic">
-            </div>
-            <div class="row mb-0">
-                <span class="name">{{ review.user.user.username }}</span>
-            </div>
-            <div class="row mb-0">
-                <span class="name">Nº Reviews: </span>
-            </div>
-            <div class="row mb-0">
-                <span class="name">Avg. Rating: </span>
-            </div>
-        </div>
-        <div class="col s12 m7 l8 offset-m1 offset-l1">
+    <div class="divider grey darken-4"></div>
+    <div class="row container">
+        <div class="col s12">
             <div class="row mb-0">
                 <span class="left"><em>{{ review.datestamp }}</em></span>
                 <span class="pr-3 right">{{ review.rating }}/5.00</span>
@@ -63,9 +81,24 @@
     {% endfor %}
     {% else %}
     <div class="row center-align">
+        {% if reviewer.user.username == user.username %}
         <h6><em>You haven't reviewed yet...</em></h6>
+        {% else %}
+        <h6><em>This user hasn't reviewed yet...</em></h6>
+        {% endif %}
     </div>
     {% endif %}
+    <!-- Buttons Section -->
+    <div class="row mt-3 right-align">
+        <div class="col s6 offset-s6">
+            <a href="#top" class="waves-effect waves-light btn-small grey darken-4 amber-text text-lighten-3">
+                <div class="row valign-wrapper">
+                    <span class="hide-on-small-only">Back to Top</span>
+                    <i class="material-icons">vertical_align_top</i>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 <!-- JS inits and meter-bars -->
 <script>

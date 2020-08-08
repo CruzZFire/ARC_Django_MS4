@@ -127,11 +127,15 @@
     <div class="divider grey darken-2 mb-3"></div>
     <!-- Reviews Loop Display -->
     <div class="row mb-0 center-align">
-        <h5>Lastest Reviews {% if book.get_reviews %}<em>(max. 3)</em>{% endif %}</h5>
+        <h5>Lastest Reviews
+            {% if book.get_reviews %}
+            <em> - (showing max. 3)</em>
+            {% endif %}
+        </h5>
     </div>
     {% if book.get_reviews %}
     {% for review in book.get_reviews %}
-    <div class="divider amber lighten-3"></div>
+    <div class="divider amber lighten-4"></div>
     <div class="row mt-3">
         <div class="col s12 m4 l3 center grey-text text-darken-4 review-user">
             <div class="row mb-0">

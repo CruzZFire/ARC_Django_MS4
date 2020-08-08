@@ -12,21 +12,40 @@
     <!-- Filter Form Section -->
     <div class="row mt-3 mb-0">
         <form action="." class="col s12 grey-text text-darken-4" method="GET">
-            <div class="row">
-                <div class="input-field col s8 m4 offset-m4 center-align">
-                    <select>
-                        <option value="" disabled selected>Rating</option>
-                        <option value="1">Option 1</option>
-                    </select>
-                    <label>Filter by Rating</label>
+            <div class="row center-align">
+                <div class="col s12 m6">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>By Date</option>
+                            <option value="1">Option 1</option>
+                        </select>
+                        <label>Sort by Date</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+                            <span class="row valign-wrapper">
+                                <span class="hide-on-small-only">Sort </span>
+                                <i class="material-icons">sort</i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
-                <div class="input-field col s4 right-align">
-                    <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
-                        <span class="row valign-wrapper">
-                            <span class="hide-on-small-only">Filter </span>
-                            <i class="material-icons">filter_list</i>
-                        </span>
-                    </button>
+                <div class="col s12 m6">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Rating</option>
+                            <option value="1">Option 1</option>
+                        </select>
+                        <label>Filter by Rating</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button id="search_button" type="submit" class="waves-effect waves-light btn grey darken-4 amber-text text-lighten-3">
+                            <span class="row valign-wrapper">
+                                <span class="hide-on-small-only">Filter </span>
+                                <i class="material-icons">filter_alt</i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -41,7 +60,7 @@
                 <img class="circle" src="{{ MEDIA_URL }}home-hero.png" height="50" width="50" alt="profile-pic">
             </div>
             <div class="row mb-0">
-                <span class="name">{{ review.user.user.username }}</span>
+                <span class="name">{{ review.user.username }}</span>
             </div>
             <div class="row mb-0">
                 <span class="name">Nº Reviews: </span>
@@ -66,6 +85,17 @@
         <h6><em>This book has no reviews yet...</em></h6>
     </div>
     {% endif %}
+    <!-- Buttons Section -->
+    <div class="row mt-3 right-align">
+        <div class="col s6 offset-s6">
+            <a href="#top" class="waves-effect waves-light btn-small grey darken-4 amber-text text-lighten-3">
+                <div class="row valign-wrapper">
+                    <span class="hide-on-small-only">Back to Top</span>
+                    <i class="material-icons">vertical_align_top</i>
+                </div>
+            </a>
+        </div>
+    </div>
     <!-- New Comment Gap -->
     {% if user.is_authenticated %}
     <div class="row mt-3 center-align new-comment-form">

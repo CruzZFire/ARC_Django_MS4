@@ -11,7 +11,8 @@ from profiles.models import UserProfile
 def book_reviews(request, book_id):
     """" A view for all the reviews of a book """
     books = Book.objects.get(book_id=book_id)
-    book_reviews_found = Review.objects.filter(book_id=book_id)
+    book_reviews_found = Review.objects.filter(
+                         book_id=book_id).order_by('-review_id')
     form = ReviewForm(request.POST or None)
 
     context = {
@@ -26,14 +27,27 @@ def book_reviews(request, book_id):
 @login_required
 def user_reviews(request, username):
     """" A view for all the reviews made from a profile """
-    user = UserProfile.objects.get(user__username=username)
     user_reviews_found = Review.objects.filter(user__username=username)
-    user_reviews_by_time = user_reviews_found.order_by('-datestamp')
+    user_reviews_by_time = user_reviews_found.order_by('-review_id')
+    reviewer = UserProfile.objects.get(user__username=username)
 
     context = {
-        "user": user,
+        "reviewer": reviewer,
         "user_reviews_found": user_reviews_found,
         "user_reviews_by_time": user_reviews_by_time,
     }
 
     return render(request, 'reviews/user_reviews.html', context)
+
+
+@login_required
+def delete_review(request, review_id):
+    """ Delete a review from the page """
+    review_found = get_object_or_404(Review, pk=review_id)
+    if not request.user.username == review_found.user.username:
+        messages.error(request, 'Sorry, only the reviewer can do that.')
+        return redirect(reverse('home'))
+
+    review_found.delete()
+    messages.success(request, 'Review deleted!')
+    return redirect(reverse('home'))
