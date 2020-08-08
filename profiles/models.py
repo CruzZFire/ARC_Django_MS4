@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from allauth.account.signals import user_signed_up
@@ -27,3 +28,5 @@ class AskBook(models.Model):
 def profile_creation(sender, **kwargs):
     profile = UserProfile(user=kwargs['user'])
     profile.save()
+    messages.success(request, 'User Created!')
+

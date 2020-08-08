@@ -6,8 +6,8 @@
     <!-- Profile Info -->
     <div class="row mt-3 mb-0">
         <div class="col s12 m6">
-            <div class="row mb-0 center-align">
-                <img class="circle grey" src="{{ user.profile_pic }}" height="150" width="150" alt="profile-pic">
+            <div class="center-align">
+                <img class="circle grey" src="{{ MEDIA_URL }}home-hero.png" height="150" width="150" alt="profile-pic">
             </div>
         </div>
         <div class="col s11 offset-s1 m5 offset-m1">
@@ -75,12 +75,18 @@
                     <div class="row">
                         {{ review.review_text }}
                     </div>
-                    <span class="row">
-                        <a class="col s4 offset-s8 amber-text text-darken-3 center" href="">
-                            <em>Edit Review</em>
-                            <i class="tiny material-icons">edit</i>
-                        </a>
-                    </span>
+                    <div class="row mb-0">
+                        <div class="col s6 offset-s6 mt-3">
+                            <a class="indigo-text text-accent-1" href="">
+                                <em  class="hide-on-small-only">Edit Review</em>
+                                <i class="material-icons rigth">edit</i>
+                            </a>
+                            <a class="red-text text-accent-4 right" href="{% url 'delete_review' review.review_id %}">
+                                <em  class="hide-on-small-only">Delete Review</em>
+                                <i class="material-icons rigth">delete_forever</i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </li>
             {% endfor %}

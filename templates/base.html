@@ -138,13 +138,25 @@
     {% for message in messages %}
         {% with message.level as level %}
         {% if level == 40 %}
-            <script>M.toast({html: '<strong><em>{{ message }}<em><strong>', classes: 'red accent-4'})</script>
+            <script>
+                M.toast({html: '<strong><em>{{ message }}<em><strong>',
+                         classes: 'red accent-4 white-text'})
+            </script>
         {% elif level == 30 %}
-            <script>M.toast({html: '<strong><em>{{ message }}<em><strong>', classes: 'yellow accent-2 grey-text text-darken-4'})</script>
+            <script>
+                M.toast({html: '<strong><em>{{ message }}<em><strong>',
+                         classes: 'yellow accent-2 grey-text text-darken-4'})
+            </script>
         {% elif level == 25 %}
-            <script>M.toast({html: '<strong><em>{{ message }}<em><strong>', classes: 'indigo accent-1 grey-text text-darken-4'})</script>
+            <script>
+                M.toast({html: '<strong><em>{{ message }}<em><strong>',
+                         classes: 'indigo accent-1 grey-text text-darken-4'})
+            </script>
         {% else %}
-            <script>M.toast({html: '<strong><em>{{ message }}<em><strong>', classes: 'grey darken-4'})</script>
+            <script>
+                M.toast({html: '<strong><em>{{ message }}<em><strong>',
+                         classes: 'grey darken-4 white-text'})
+            </script>
         {% endif %}
         {% endwith %}
     {% endfor %}
