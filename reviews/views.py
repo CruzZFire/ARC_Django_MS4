@@ -11,13 +11,20 @@ from profiles.models import UserProfile
 @login_required
 def book_reviews(request, book_id):
     """" A view for all the reviews of a book """
-    books = Book.objects.get(book_id=book_id)
+    book = Book.objects.get(book_id=book_id)
     book_reviews_found = Review.objects.filter(
                          book_id=book_id).order_by('-review_id')
     form = ReviewForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.instance.user = request.user
+            form.instance.book = book
+            form.save()
+            messages.success(request, 'Review Submitted')
+            form = ReviewForm(None)
 
     context = {
-        "book": books,
+        "book": book,
         "book_reviews_found": book_reviews_found,
         "form": form,
     }
@@ -46,11 +53,11 @@ def edit_review(request, review_id):
     """ Delete a review from the page """
     review_found = get_object_or_404(Review, pk=review_id)
     if not request.user.username == review_found.user.username:
-        messages.error(request, 'Sorry, only the reviewer can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, 'Sorry, only the reviewer can do that')
+        return redirect(reverse('profile'))
 
     review_found.delete()
-    messages.success(request, 'Review deleted!')
+    messages.success(request, 'Review Edited and Published')
     return redirect(reverse('home'))
 
 
@@ -58,10 +65,11 @@ def edit_review(request, review_id):
 def delete_review(request, review_id):
     """ Delete a review from the page """
     review_found = get_object_or_404(Review, pk=review_id)
+    reverse_name = review_found.user.username
     if not request.user.username == review_found.user.username:
-        messages.error(request, 'Sorry, only the reviewer can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, 'Sorry, just the reviewer delete the review')
+        return redirect(reverse('profile'))
 
     review_found.delete()
-    messages.success(request, 'Review deleted!')
-    return redirect(reverse('home'))
+    messages.success(request, 'Review Deleted Succesfully!')
+    return redirect(reverse('profile'))

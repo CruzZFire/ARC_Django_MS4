@@ -61,6 +61,8 @@ def book_detail(request, book_id):
             form.instance.user = request.user
             form.instance.book = book
             form.save()
+            messages.success(request, 'Review Submitted')
+            form = ReviewForm(None)
 
     context = {
         "book": book,
