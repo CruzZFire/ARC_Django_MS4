@@ -70,8 +70,8 @@
                         <img src="{{ MEDIA_URL }}home-main1.png" alt="profile-bg">
                     </div>
                     <img class="circle" src="{{ MEDIA_URL }}home-hero.png" alt="profile-pic">
-                    <span class="amber-text text-lighten-5 name">John Doe</span>
-                    <span class="amber-text text-lighten-5 email"><em>jdandturk@gmail.com</em></span>
+                    <span class="amber-text text-lighten-5 name">{{ user.username }}</span>
+                    <span class="amber-text text-lighten-5 email"><em>{{ user.email }}</em></span>
                 </div>
             </li>
             <li>
@@ -85,7 +85,7 @@
                 </a>
             </li>
             <li>
-                <a class="waves-effect grey-text text-darken-4" href="{% url 'profile' %}">
+                <a class="waves-effect grey-text text-darken-4" href="{% url 'user_reviews' user.username %}">
                     My Reviews
                 </a>
             </li>
@@ -135,21 +135,9 @@
     
     <!-- Toast Controls -->
     {% if messages %}
-    <div class="message-container">
-        {% for message in messages %}
-        {% with message.level as level %}
-        {% if level == 40 %}
-        {% include 'includes/toasts/toast_error.html' %}
-        {% elif level == 30 %}
-        {% include 'includes/toasts/toast_warning.html' %}
-        {% elif level == 25 %}
-        {% include 'includes/toasts/toast_success.html' %}
-        {% else %}
-        {% include 'includes/toasts/toast_info.html' %}
-        {% endif %}
-        {% endwith %}
-        {% endfor %}
-    </div>
+    {% for message in messages %}
+    <script>M.toast({html: '{{ message }}', classes: 'pink'})</script>
+    {% endfor %}
     {% endif %}
 
     <!-- Template Block Placement -->
