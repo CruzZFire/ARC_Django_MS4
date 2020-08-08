@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect, render, reverse, get_object_or_404
 
 from .forms import ReviewForm
 from .models import Review
@@ -38,6 +39,19 @@ def user_reviews(request, username):
     }
 
     return render(request, 'reviews/user_reviews.html', context)
+
+
+@login_required
+def edit_review(request, review_id):
+    """ Delete a review from the page """
+    review_found = get_object_or_404(Review, pk=review_id)
+    if not request.user.username == review_found.user.username:
+        messages.error(request, 'Sorry, only the reviewer can do that.')
+        return redirect(reverse('home'))
+
+    review_found.delete()
+    messages.success(request, 'Review deleted!')
+    return redirect(reverse('home'))
 
 
 @login_required

@@ -10,6 +10,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     asked_books = models.ManyToManyField(Book, through='AskBook')
     asked_books_count = str(3)
+    books_total = 5
+    reviews_total = 4
+    rating_avg = reviews_total/4
 
     def __str__(self):
         return self.user.username

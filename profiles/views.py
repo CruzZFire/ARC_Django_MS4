@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, reverse, get_object_or_404
 
 from .models import UserProfile
@@ -5,6 +6,7 @@ from books.models import Book
 from reviews.models import Review
 
 
+@login_required
 def profile(request):
     """" A view for profile page """
     profile = get_object_or_404(UserProfile, user=request.user)
