@@ -75,7 +75,21 @@
                 <span class="pr-3 right">{{ review.rating }}/5.00</span>
             </div>
             <div class="row mt-3 mb-0">
-                <span class="text">{{ review.review_text }}</span>
+                <div class="text">{{ review.review_text }}</div>  
+                {% if request.user.username == review.user.username %}                    
+                <div class="row mb-0">
+                    <div class="col s9 offset-s3 mt-3">
+                        <a class="indigo-text text-accent-1" href="">
+                            <em  class="hide-on-small-only">Edit Review</em>
+                            <i class="material-icons rigth">edit</i>
+                        </a>
+                        <a class="red-text text-accent-4 right" href="{% url 'delete_review' review.review_id %}">
+                            <em  class="hide-on-small-only">Delete Review</em>
+                            <i class="material-icons rigth">delete_forever</i>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
