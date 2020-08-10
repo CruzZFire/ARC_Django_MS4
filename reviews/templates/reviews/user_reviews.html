@@ -76,18 +76,25 @@
     <!-- Reviews Loop Display -->
     {% if user_reviews_found %}
     {% for review in user_reviews_by_time %}
-    <div class="divider grey darken-4"></div>
-    <div class="row container">
+    <div class="row">
         <div class="col s12">
-            <div class="row mb-0">
-                <strong>{{ review.book.title }}</strong> - <em>{{ review.datestamp }}</em>
-                <span class="pr-3 right">{{ review.rating }}/5.00</span>
+            <div class="divider grey darken-4"></div>
+            <div class="row m-0 amber lighten-4">
+                <a class="pl-3 grey-text text-darken-4" href="{% url 'book_reviews' review.book.book_id %}">
+                    <strong>{{ review.book.title }}</strong> - <em>{{ review.datestamp }}</em>
+                </a>
+                <span class="pr-3 right">
+                    <i class="material-icons right">stars</i>
+                    {{ review.rating }}/5.00
+                </span>
             </div>
-            <div class="row mt-3 mb-0">
-                <div class="text">{{ review.review_text }}</div>
+            <div class="divider grey darken-4"></div>
+            <div class="row m-0 amber lighten-4">
+                <div class="p-2 text">{{ review.review_text }}</div>
+                {% if request.user.username == review.user.username %}                    
                 <div class="row mb-0">
                     <div class="col s6 offset-s6 mt-3">
-                        <a class="indigo-text text-accent-1" href="">
+                        <a class="indigo-text text-accent-2" href="">
                             <em  class="hide-on-small-only">Edit Review</em>
                             <i class="material-icons rigth">edit</i>
                         </a>
@@ -97,6 +104,7 @@
                         </a>
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
