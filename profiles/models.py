@@ -9,11 +9,10 @@ from books.models import Book
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    is_writer = models.BooleanField(default=False)
+    pic_url = models.CharField(max_length=54,
+                               default='missingbook.png')
     asked_books = models.ManyToManyField(Book, through='AskBook')
-    asked_books_count = str(3)
-    books_total = 5
-    reviews_total = 4
-    rating_avg = reviews_total/4
 
     def __str__(self):
         return self.user.username
@@ -29,4 +28,3 @@ def profile_creation(sender, **kwargs):
     profile = UserProfile(user=kwargs['user'])
     profile.save()
     messages.success(request, 'User Created!')
-

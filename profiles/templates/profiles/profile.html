@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container grey-text text-darken-4">
     <!-- Profile Info -->
-    <div class="row mt-3 mb-0">
+    <div class="row mt-3">
         <div class="col s12 m6">
             <div class="center-align">
                 <img class="circle grey" src="{{ MEDIA_URL }}home-hero.png" height="150" width="150" alt="profile-pic">
@@ -16,6 +16,9 @@
                 <p><strong>E-mail:</strong> {{ profile.user.email }}</p>
                 <p><strong>Top Reader:</strong> #{{ profile.read_rank }}</p>
                 <p><strong>Top Reviewer:</strong> #{{ profile.review_rank }}</p>
+                <a class="amber-text text-darken-4 edit-button" href="{% url 'edit_profile' user.username %}">
+                    <em>Edit My Profile</em>
+                </a>
             </div>
         </div>
     </div>
