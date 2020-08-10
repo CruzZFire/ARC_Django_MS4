@@ -5,11 +5,9 @@ from .models import User, UserProfile
 
 class UserUpdateForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'name': "username",
         'type': "text",
     }))
     email = forms.EmailField(widget=forms.EmailInput(attrs={
-        'name': "email",
         'type': "email",
     }))
 
@@ -20,7 +18,7 @@ class UserUpdateForm(forms.ModelForm):
 
 class ProfileUpdateForm(forms.ModelForm):
     pic_choices = [
-        ('', 'Change Your Avatar'),
+        ('', 'Choose Your Avatar'),
         ('1.png', 'Experimented Man'),
         ('2.png', 'Female Explorer'),
         ('3.png', 'Hipster Man'),
@@ -28,7 +26,8 @@ class ProfileUpdateForm(forms.ModelForm):
         ('5.png', 'Rebel Kid'),
         ('6.png', 'Chic Girl'),
     ]
-    pic_url = forms.CharField(widget=forms.Select(choices=pic_choices))
+    pic_url = forms.CharField(widget=forms.Select(choices=pic_choices),
+                              required=False)
     is_writer = forms.BooleanField(widget=forms.CheckboxInput(attrs={
         'type': "checkbox",
         'disabled': True,

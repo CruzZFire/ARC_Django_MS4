@@ -55,4 +55,25 @@ def ask_book(request, book_id):
 
 @login_required
 def update_profile(request, username):
+    user_profile = get_object_or_404(UserProfile, user__username=username)
+    user_form = UserUpdateForm(request.POST or None,
+                               instance=request.user)
+    profile_form = ProfileUpdateForm(request.POST or None,
+                                     instance=request.user.userprofile)
+
+    if request.method == 'POST':
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            messages.success(request, 'User Updated')
+        else:
+            messages.error(request, 'Something was wrong with your Basic Info')
+            return redirect(reverse('profile'))
+
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Avatar Updated')
+        else:
+            messages.error(request, 'Error Changing Avatar')
+            return redirect(reverse('profile'))
+
     return redirect(reverse('profile'))
