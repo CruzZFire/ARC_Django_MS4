@@ -22,7 +22,7 @@
                 <fieldset>
                     <legend>Customize Your Profile</legend>
                     <div class="center-align mt-3">
-                        <img class="circle grey" src="{{ MEDIA_URL }}{{ user_profile.pic_url }}" height="150" width="150" alt="profile-pic">
+                        <img id="display-profile-pic" class="circle amber accent-1" src="{{ MEDIA_URL }}{{ user_profile.pic_url }}" height="150" width="150" alt="profile-pic">
                     </div>
                     <div class="input-field col s12 m6 offset-m3">
                         {{ profile_form.pic_url }}
@@ -33,7 +33,7 @@
                             <label>
                                 {{ profile_form.is_writer }}
                                 <span class="lever"></span>
-                            Are you a Writer? <em>(comming soon)</em>
+                                Are you a Writer? <em>(Comming Soon)</em>
                             </label>
                         </div>
                     </div>
@@ -49,6 +49,10 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('select').formSelect();
+        $('#select-img').on('change', function() {
+            imageSelected = this.value;
+            $('#display-profile-pic').attr('src', '{{ MEDIA_URL }}'+imageSelected);
+        })
     });
 </script>
 {% endblock %}

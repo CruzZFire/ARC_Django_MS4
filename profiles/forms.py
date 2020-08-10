@@ -18,7 +18,7 @@ class UserUpdateForm(forms.ModelForm):
 
 class ProfileUpdateForm(forms.ModelForm):
     pic_choices = [
-        ('', 'Choose Your Avatar'),
+        ('missingbook.png', 'Choose Your Avatar'),
         ('1.png', 'Experimented Man'),
         ('2.png', 'Female Explorer'),
         ('3.png', 'Hipster Man'),
@@ -26,8 +26,9 @@ class ProfileUpdateForm(forms.ModelForm):
         ('5.png', 'Rebel Kid'),
         ('6.png', 'Chic Girl'),
     ]
-    pic_url = forms.CharField(widget=forms.Select(choices=pic_choices),
-                              required=False)
+    pic_url = forms.CharField(widget=forms.Select(choices=pic_choices,
+                                                  attrs={'id': "select-img", }
+                                                  ), required=False)
     is_writer = forms.BooleanField(widget=forms.CheckboxInput(attrs={
         'type': "checkbox",
         'disabled': True,
