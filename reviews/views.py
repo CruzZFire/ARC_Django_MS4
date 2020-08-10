@@ -70,7 +70,6 @@ def edit_review(request, review_id):
 def delete_review(request, review_id):
     """ Delete a review from the page """
     review_found = get_object_or_404(Review, pk=review_id)
-    reverse_name = review_found.user.username
     if not request.user.username == review_found.user.username:
         messages.error(request, 'Sorry, just the reviewer delete the review')
         return redirect(reverse('profile'))
