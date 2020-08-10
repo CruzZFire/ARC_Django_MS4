@@ -145,10 +145,10 @@
                 <span class="name">{{ review.user.username }}</span>
             </div>
             <div class="row mb-0">
-                <span class="name">Nº Reviews: </span>
+                <span class="name">Nº Reviews: {{ review.get_total_user_rw }}</span>
             </div>
             <div class="row mb-0">
-                <span class="name">Avg. Rating: </span>
+                <span class="name">Avg. Rating: {{ review.get_avg_user_rw|floatformat:2 }}</span>
             </div>
         </div>
         <div class="col s12 m7 l8 offset-m1 offset-l1">

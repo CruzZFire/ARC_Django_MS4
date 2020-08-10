@@ -36,11 +36,16 @@ def book_reviews(request, book_id):
 def user_reviews(request, username):
     """" A view for all the reviews made from a profile """
     user_reviews_found = Review.objects.filter(user__username=username)
+    if user_reviews_found:
+        user_reviews_data = user_reviews_found[0]
+    else:
+        user_reviews_data = ''
     user_reviews_by_time = user_reviews_found.order_by('-review_id')
     reviewer = UserProfile.objects.get(user__username=username)
 
     context = {
         "reviewer": reviewer,
+        "user_reviews_data": user_reviews_data,
         "user_reviews_found": user_reviews_found,
         "user_reviews_by_time": user_reviews_by_time,
     }

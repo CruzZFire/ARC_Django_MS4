@@ -14,10 +14,20 @@
                     <h5 class="name">{{ reviewer.user.username }}</h5>
                 </div>
                 <div class="row mb-0">
-                    <h6 class="name">Nº Reviews: {{ reviewer.reviews_total }}</h6>
+                    <h6 class="name">Nº Reviews: 
+                        {% if user_reviews_found %}
+                            {{ user_reviews_data.get_total_user_rw }}</h6>
+                        {% else %}
+                            <em>0</em></h6>
+                        {% endif %}
                 </div>
                 <div class="row mb-0">
-                    <h6 class="name">Avg. Rating: {{ reviewer.rating_avg }}</h6>
+                    <h6 class="name">Avg. Rating: 
+                        {% if user_reviews_found %}
+                            {{ user_reviews_data.get_avg_user_rw|floatformat:2 }}</h6>
+                        {% else %}
+                            <em>n/a</em></h6>
+                        {% endif %}
                 </div>
             </div>
         </div>
