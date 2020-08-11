@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, reverse, get_object_or_404
 
 from .forms import UserUpdateForm, ProfileUpdateForm
-from .models import UserProfile
+from .models import UserProfile, AskBook
 from books.models import Book
 from reviews.models import Review
 
@@ -16,9 +16,11 @@ def profile(request):
     user_reviews_count = user_reviews_found.count()
     user_reviews_short = user_reviews_found.order_by('-review_id')[0:3]
     short_reviews_count = user_reviews_short.count()
+    books_in_profile = profile.asked_books.all()
 
     context = {
         "profile": profile,
+        "books_in_profile": books_in_profile,
         "user_reviews_found": user_reviews_found,
         "user_reviews_count": user_reviews_count,
         "user_reviews_short": user_reviews_short,
@@ -47,12 +49,6 @@ def edit_profile(request, username):
     return render(request, 'profiles/edit_profile.html', context)
 
 
-def ask_book(request, book_id):
-    """" Get or Create books in asked-books """
-
-    return render(request, 'home/index.html')
-
-
 @login_required
 def update_profile(request, username):
     user_profile = get_object_or_404(UserProfile, user__username=username)
@@ -77,3 +73,22 @@ def update_profile(request, username):
             return redirect(reverse('profile'))
 
     return redirect(reverse('profile'))
+
+
+@login_required
+def ask_book(request, book_id):
+    """" Get or Create books in asked-books """
+    book = Book.objects.get(book_id=book_id)
+    user = get_object_or_404(UserProfile, user=request.user)
+    user_book_count = user.asked_books.count()
+
+    if user_book_count < 4:
+        if user.asked_books.get(book_id=book.book_id) is None:
+            messages.success(request, 'Book added to your read list')
+            return redirect(request, "url 'book_detail' book.book_id")
+        else:
+            messages.error(request, 'Book is already on your read list')
+    else:
+        messages.error(request, 'Already 4 books on your read list')
+
+    return render(request, 'home/index.html')

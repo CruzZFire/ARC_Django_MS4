@@ -22,9 +22,11 @@ class AskBook(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.user.username
+
 
 @receiver(user_signed_up)
 def profile_creation(sender, **kwargs):
     profile = UserProfile(user=kwargs['user'])
     profile.save()
-    messages.success(request, 'User Created!')

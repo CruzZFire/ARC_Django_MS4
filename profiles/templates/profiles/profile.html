@@ -35,18 +35,17 @@
         </div>
     </div>
     <!-- Reserved Books Display -->
-    <div class="row mb-0 pb-1 grey darken-3 reserved-books-section">            
-        {% for book in user.asked_books %}
+    {{ books_in_profile }}
+    <div class="row mb-0 pb-1 grey darken-3 reserved-books-section">
+        {% for book in books_in_profile %}
             <div class="col s12 m6 l3 center-align">
-                <img src="{{ book.book.image_url}}" height="180" alt="book-cover">
+                <img src="{{ book.image_url}}" height="180" alt="book-cover">
             </div>
         {% endfor %}
         {% for i in "1234" %}
             <div class="col s12 m6 l3 mt-3 pb-1 center-align">
                 <div class="row mb-0">
-                    <a href="">
-                        <img src="{{ MEDIA_URL }}missingbook.png" height="180" alt="no-book">
-                    </a>
+                    <img src="{{ MEDIA_URL }}missingbook.png" height="180" alt="no-book">
                 </div>
             </div>
         {% endfor %}
