@@ -7,7 +7,7 @@
     <div class="row mt-3">
         <div class="col s12 m6">
             <div class="center-align">
-                <img class="circle amber accent-1" src="{{ MEDIA_URL }}{{ profile.pic_url }}" height="150" width="150" alt="profile-pic">
+                <img class="circle amber accent-1 z-depth-2" src="{{ MEDIA_URL }}{{ profile.pic_url }}" height="150" width="150" alt="profile-pic">
             </div>
         </div>
         <div class="col s11 offset-s1 m5 offset-m1">
@@ -25,9 +25,11 @@
     <!-- Reserved Books Section Header -->
     <div class="row mb-0 grey darken-4 reserved-books-section">
         <div class="col s12 valign-wrapper amber-text text-lighten-3">
-            <h5 class="col s6 center-align">Reserved Reads</h5>
+            <h5 class="col s6 center-align">Reserved Reads
+                <span>(max. 4)</span>
+            </h5>
             <h6 class="col s6 right-align">
-                <a class="amber-text text-darken-3" href="">
+                <a class="amber-text text-darken-3" href="{% url 'user_books' user.username %}">
                     <em>Change Books</em>
                     <i class="tiny material-icons">edit</i>
                 </a>
@@ -35,17 +37,20 @@
         </div>
     </div>
     <!-- Reserved Books Display -->
-    {{ books_in_profile }}
-    <div class="row mb-0 pb-1 grey darken-3 reserved-books-section">
+    <div class="row mb-0 pb-3 grey darken-3 reserved-books-section">
         {% for book in books_in_profile %}
-            <div class="col s12 m6 l3 center-align">
-                <img src="{{ book.image_url}}" height="180" alt="book-cover">
+            <div class="col s12 m6 l3 mt-3 pb-1 center-align">
+                <a href="{% url 'book_detail' book.book_id %}">
+                    <img class="z-depth-3" src="{{ book.image_url}}" height="180" alt="book-cover">
+                </a>
             </div>
         {% endfor %}
-        {% for i in "1234" %}
+        {% for i in empty_loop %}
             <div class="col s12 m6 l3 mt-3 pb-1 center-align">
                 <div class="row mb-0">
-                    <img src="{{ MEDIA_URL }}missingbook.png" height="180" alt="no-book">
+                    <a href="{% url 'all_books' %}">
+                        <img class="z-depth-3" src="{{ MEDIA_URL }}missingbook.png" height="180" alt="no-book">
+                    </a>
                 </div>
             </div>
         {% endfor %}

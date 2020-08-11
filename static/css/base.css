@@ -50,6 +50,10 @@ main {
     padding-bottom: 10px;
 }
 
+.pb-3 {
+    padding-bottom: 27px;
+}
+
 .pl-3 {
     padding-left: 27px;
 }
@@ -263,6 +267,8 @@ form a {
     padding: 15px;
     text-align: justify;
 }
+
+
 
 /* -------------- Media Queries -------------- */
 

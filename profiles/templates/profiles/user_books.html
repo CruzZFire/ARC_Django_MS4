@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container grey-text text-darken-4">
+    <!-- User Name -->
+    <div class="row mb-0">
+        <div class="col s12 center">
+            <h4><strong>Your Read List</strong></h4>
+        </div>
+    </div>
+    <!-- Reserved Books Display -->
+    <div class="row mb-0 pb-3">
+        {% for book in books_in_profile %}
+            <div class="col s12 m6 pt-1 center-align">
+                <a class="grey-text text-darken-4" href="{% url 'book_detail' book.book_id %}">
+                    <div class="p-2">
+                        <h6>{{ book.title}}</h6>
+                    </div>
+                    <img class="z-depth-3" src="{{ book.image_url}}" height="240" alt="book-cover">
+                </a>
+                <div>
+                    <a class="red-text text-accent-4" href="{% url 'rmv_book' book.book_id %}">
+                        <strong><em class="hide-on-small-only">Remove</em></strong>
+                        <i class="material-icons rigth">delete_forever</i>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        {% for i in empty_loop %}
+        <div class="col s12 m6 pt-1 center-align">
+            <div class="p-2">
+                <h6>Empty Book</h6>
+            </div>
+            <img class="z-depth-3" src="{{ MEDIA_URL }}missingbook.png" height="240" alt="book-cover">
+            <div>
+                <a class="indigo-text text-accent-2" href="{% url 'all_books' %}">
+                    <strong><em class="hide-on-small-only">Add a Book</em></strong>
+                    <i class="material-icons rigth">note_add</i>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- JS inits and meter-bars -->
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    });
+</script>
+{% endblock %}
