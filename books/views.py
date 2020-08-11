@@ -70,18 +70,3 @@ def book_detail(request, book_id):
     }
 
     return render(request, 'books/book_detail.html', context)
-
-
-def add_book(request):
-    """" A view for index page """
-    return render(request, 'home/index.html')
-
-
-def edit_book(request, book_id):
-    """" A view for index page """
-    return render(request, 'home/index.html')
-
-
-def del_book(request, book_id):
-    """" A view for index page """
-    return render(request, 'home/index.html')

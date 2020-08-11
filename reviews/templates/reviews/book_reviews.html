@@ -76,12 +76,14 @@
                 <span class="left"><em>{{ review.datestamp }}</em></span>
                 <span class="pr-3 right">{{ review.rating }}/5.00</span>
             </div>
-            <div class="row mt-3 mb-0">
-                <div class="text">{{ review.review_text }}</div>  
+            <div class="row m-0 pb-1 pt-1 mb-0">
+                <div class="container text">
+                    {{ review.review_text }}
+                </div>  
                 {% if request.user.username == review.user.username %}                    
                 <div class="row mb-0">
                     <div class="col s9 offset-s3 mt-3">
-                        <a class="indigo-text text-accent-1" href="">
+                        <a class="indigo-text text-accent-2" href="">
                             <em  class="hide-on-small-only">Edit Review</em>
                             <i class="material-icons rigth">edit</i>
                         </a>

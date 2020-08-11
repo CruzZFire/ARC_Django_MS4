@@ -89,8 +89,10 @@
                 </span>
             </div>
             <div class="divider grey darken-4"></div>
-            <div class="row m-0 amber lighten-4">
-                <div class="p-2 text">{{ review.review_text }}</div>
+            <div class="row m-0 pb-1 pt-1 amber lighten-4">
+                <div class="container text">
+                    {{ review.review_text }}
+                </div>
                 {% if request.user.username == review.user.username %}                    
                 <div class="row mb-0">
                     <div class="col s6 offset-s6 mt-3">
