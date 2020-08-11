@@ -14,6 +14,7 @@ def book_reviews(request, book_id):
     book = Book.objects.get(book_id=book_id)
     book_reviews_found = Review.objects.filter(
                          book_id=book_id).order_by('-review_id')
+    book_reviews_count = book_reviews_found.count()
     form = ReviewForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -23,8 +24,17 @@ def book_reviews(request, book_id):
             messages.success(request, 'Review Submitted')
             form = ReviewForm(None)
 
+    if request.GET.get('sort-option'):
+        sort_value = request.GET.get('sort-option')
+        book_reviews_found = book_reviews_found.order_by(sort_value)
+
+    if request.GET.get('filter-option'):
+        filter_value = request.GET.get('filter-option')
+        book_reviews_found = book_reviews_found.filter(rating=filter_value)
+
     context = {
         "book": book,
+        "book_reviews_count": book_reviews_count,
         "book_reviews_found": book_reviews_found,
         "form": form,
     }
@@ -42,6 +52,14 @@ def user_reviews(request, username):
         user_reviews_data = ''
     user_reviews_by_time = user_reviews_found.order_by('-review_id')
     reviewer = UserProfile.objects.get(user__username=username)
+
+    if request.GET.get('sort-option'):
+        sort_value = request.GET.get('sort-option')
+        user_reviews_by_time = user_reviews_found.order_by(sort_value)
+
+    if request.GET.get('filter-option'):
+        filter_value = request.GET.get('filter-option')
+        user_reviews_by_time = user_reviews_found.filter(rating=filter_value)
 
     context = {
         "reviewer": reviewer,
