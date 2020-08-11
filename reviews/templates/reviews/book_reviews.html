@@ -8,7 +8,9 @@
         <div class="col s12 center">
             <div class="col s12 center grey-text text-darken-4">
                 <div class="row mb-0">
-                    <img class="z-depth-2" src="{{ book.image_url }}" height="180" alt="Book-Cover">
+                    <a href="{% url 'book_detail' book.book_id %}">
+                        <img class="z-depth-2" src="{{ book.image_url }}" height="180" alt="Book-Cover">
+                    </a>
                 </div>
                 <div class="row mb-0">
                     <h5 class="name">
@@ -27,7 +29,7 @@
                 <div class="row mb-0">
                     <h6 class="name">Avg. Rating: 
                         {% if book_reviews_found %}
-                            {{ book_reviews_count }}
+                            {{ book.get_avg_book_rw|floatformat:2 }}
                         {% else %}
                             <em>n/a</em>
                         {% endif %}

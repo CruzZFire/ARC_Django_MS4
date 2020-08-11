@@ -29,3 +29,20 @@ class Book(models.Model):
     def get_reviews(self):
         book_rw_short = self.reviews.all().order_by('-review_id')[0:3]
         return book_rw_short
+
+    @property
+    def get_avg_book_rw(self):
+        book_rw_object = self.reviews.all()
+        book_rw_all = book_rw_object.count() + self.ratings_count
+        rw_1 = book_rw_object.filter(rating='1').count() + self.ratings_1
+        rw_2 = book_rw_object.filter(rating='2').count() + self.ratings_2
+        rw_3 = book_rw_object.filter(rating='3').count() + self.ratings_3
+        rw_4 = book_rw_object.filter(rating='4').count() + self.ratings_4
+        rw_5 = book_rw_object.filter(rating='5').count() + self.ratings_5
+
+        if book_rw_all > 0:
+            book_rw_avg = (rw_1+rw_2*2+rw_3*3+rw_4*4+rw_5*5)/book_rw_all
+        else:
+            book_rw_avg = 'n/a'
+        
+        return book_rw_avg
