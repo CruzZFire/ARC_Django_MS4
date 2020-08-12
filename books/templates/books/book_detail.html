@@ -64,13 +64,13 @@
     <!-- Book Reviews -->
     <div class="row mb-0 amber lighten-3">
         <div class="col s12 center-align">
-            <h5>Reviews - ({{ book.ratings_count }})</h5>
+            <h5>Reviews - ({{ book_reviews_count }})</h5>
         </div>
     </div>
     <!-- Ratings Display -->
     <div class="row mb-0 pb-1 amber lighten-4">
         <div class="row mb-0 pb-1 center-align">
-            Average Rating: <strong> {{ book.average_rating }}/5.00 </strong>
+            Average Rating: <strong> {{ book.get_avg_book_rw|floatformat:2 }}/5.00 </strong>
         </div>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <div class="col s6 right-align">

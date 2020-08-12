@@ -14,7 +14,7 @@ def book_reviews(request, book_id):
     book = Book.objects.get(book_id=book_id)
     book_reviews_found = Review.objects.filter(
                          book_id=book_id).order_by('-review_id')
-    book_reviews_count = book_reviews_found.count()
+    book_reviews_count = book_reviews_found.count() + book.ratings_count
     form = ReviewForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -23,6 +23,9 @@ def book_reviews(request, book_id):
             form.save()
             messages.success(request, 'Review Submitted')
             form = ReviewForm(None)
+            return redirect(reverse('book_reviews', kwargs={
+                'book_id': book.book_id
+            }))
 
     if request.GET.get('sort-option'):
         sort_value = request.GET.get('sort-option')

@@ -64,16 +64,10 @@ def update_profile(request, username):
     if request.method == 'POST':
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
+            profile_form.save()
             messages.success(request, 'User Updated')
         else:
-            messages.error(request, 'Something was wrong with your Basic Info')
-            return redirect(reverse('profile'))
-
-        if profile_form.is_valid():
-            profile_form.save()
-            messages.success(request, 'Avatar Updated')
-        else:
-            messages.error(request, 'Error Changing Avatar')
+            messages.error(request, 'Username already taken')
             return redirect(reverse('profile'))
 
     return redirect(reverse('profile'))

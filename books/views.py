@@ -55,6 +55,9 @@ def search_books(request):
 def book_detail(request, book_id):
     """" A view for book detail page """
     book = get_object_or_404(Book, pk=book_id)
+    book_reviews_found = Review.objects.filter(
+                         book_id=book_id).order_by('-review_id')
+    book_reviews_count = book_reviews_found.count() + book.ratings_count
     form = ReviewForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -63,9 +66,13 @@ def book_detail(request, book_id):
             form.save()
             messages.success(request, 'Review Submitted')
             form = ReviewForm(None)
+            return redirect(reverse('book_detail', kwargs={
+                'book_id': book.book_id
+            }))
 
     context = {
         "book": book,
+        "book_reviews_count": book_reviews_count,
         "form": form,
     }
 
