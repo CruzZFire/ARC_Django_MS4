@@ -60,7 +60,7 @@ def book_detail(request, book_id):
     if book_reviews_found.count() > 0:
         book_reviews_count = book_reviews_found.count() + book.ratings_count
     else:
-        book_reviews_count = book.ratings_counts
+        book_reviews_count = book.ratings_count
 
     form = ReviewForm(request.POST or None)
     if request.method == 'POST':
