@@ -5,10 +5,10 @@ from django.core.validators import MinLengthValidator
 class Book(models.Model):
     book_id = models.AutoField(primary_key=True)
     books_count = models.IntegerField(default=1)
-    authors = models.CharField(max_length=254)
+    authors = models.CharField(max_length=500)
     publication_year = models.CharField(max_length=4, null=True, blank=True,
                                         validators=[MinLengthValidator(4)])
-    title = models.CharField(max_length=254)
+    title = models.CharField(max_length=500)
     language_code = models.CharField(max_length=5, default="eng")
     average_rating = models.DecimalField(max_digits=3, decimal_places=2,
                                          null=True, blank=True)

@@ -1,0 +1,1 @@
+web: gunicorn arc_community.wsgi:application
