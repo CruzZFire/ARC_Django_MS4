@@ -8,7 +8,7 @@
         <form class="col s12 center-align" action="{% url 'update_profile' user.username %}" method="POST">
             {% csrf_token %}
             <div class="row">
-                <fieldset>
+                <fieldset class="grey lighten-5 z-depth-2">
                     <legend>Basic Info</legend>
                     <div class="input-field col s12 m6 offset-m3">
                         <i class="material-icons prefix">account_circle</i>
@@ -19,10 +19,10 @@
                         {{ user_form.email }}
                     </div>
                 </fieldset>
-                <fieldset>
+                <fieldset class="grey lighten-5 z-depth-2 mt-3">
                     <legend>Customize Your Profile</legend>
                     <div class="center-align mt-3">
-                        <img id="display-profile-pic" class="circle amber accent-1" src="{{ MEDIA_URL }}{{ user_profile.pic_url }}" height="150" width="150" alt="profile-pic">
+                        <img id="display-profile-pic" class="circle amber accent-1 z-depth-2" src="{{ MEDIA_URL }}{{ user_profile.pic_url }}" height="150" width="150" alt="profile-pic">
                     </div>
                     <div class="input-field col s12 m6 offset-m3">
                         {{ profile_form.pic_url }}
@@ -39,9 +39,11 @@
                     </div>
                 </fieldset>
             </div>
-            <button type="submit" class="btn-small grey darken-4">
-                <em>Update My Profile</em>
-            </button>
+            <div class="hover-effect-button">
+                <button type="submit" class="btn-small grey darken-4">
+                    <em>Update My Profile</em>
+                </button>
+            </div>
         </form>
     </div>
 </div>

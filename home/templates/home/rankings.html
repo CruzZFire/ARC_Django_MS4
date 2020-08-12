@@ -11,65 +11,65 @@
     </div>
     <!-- Ranks Display -->
     <div class="row mb-0 pb-3">
-		<div class="col s12 l4 mt-3">
-			<!-- Book Reviews -->
-			<table>
-				<tr>
+		<!-- Book Reviews -->
+		<div class="col s12 mt-3">
+			<table class="container highlight z-depth-1 grey lighten-5">
+				<tr class="amber lighten-4">
 					<th>#</th>
 					<th>Most Reviewed Books</th>
-					<th><em>(number)</em></th>
+					<th class="right-align"><em>(number)</em></th>
 				</tr>
 				{% for book in top_rw_book %}
 				<tr>
 					<td>{{ forloop.counter }}</td>
-					<td>
+					<td class="hover-effect-button">
 						<a class="grey-text text-darken-4" href="{% url 'book_detail' book.book_id %}">
 							{{ book.title }}
 						</a>
 					</td>
-					<td class="center-align">{{ book.ratings_count }}</td>
+					<td class="right-align">{{ book.ratings_count }}</td>
 				</tr>
 				{% endfor %}
 			</table>
 		</div>
-		<div class="col s12 l4 mt-3">
-			<!-- Book Average -->
-			<table>
-				<tr>
+		<!-- Book Average -->
+		<div class="col s12 mt-3">
+			<table class="container highlight z-depth-1 grey lighten-5">
+				<tr class="amber lighten-4">
 					<th>#</th>
-					<th>Best Average Book</th>
-					<th><em>(number)</em></th>
+					<th>Best Rated Books</th>
+					<th class="right-align"><em>(avg.)</em></th>
 				</tr>
 				{% for book in top_avg_book %}
 				<tr>
 					<td>{{ forloop.counter }}</td>
-					<td>
+					<td class="hover-effect-button">
 						<a class="grey-text text-darken-4" href="{% url 'book_detail' book.book_id %}">
 							{{ book.title }}
 						</a>
 					</td>
-					<td class="center-align">{{ book.average_rating }}</td>
+					<td class="right-align">{{ book.average_rating }}</td>
 				</tr>
 				{% endfor %}
 			</table>
 		</div>
-		<div class="col s12 l4 mt-3">
-			<!-- User Reviews -->
-			<table>
-				<tr>
+		<!-- User Reviews -->
+		<div class="col s12 mt-3">
+			<table class="container highlight z-depth-1 grey lighten-5">
+				<tr class="amber lighten-4">
 					<th>#</th>
-					<th>Best Reviewers</th>
-					<th><em>(reviews)</em></th>
+					<th>Top Reviewers</th>
+					<th class="right-align"><em>(reviews)</em></th>
 				</tr>
 				{% for profile in rw_user %}
 				<tr>
 					<td>{{ forloop.counter }}</td>
-					<td>
+					<td class="hover-effect-button">
 						<a class="grey-text text-darken-4" href="{% url 'user_reviews' profile.user__username %}">
 							{{ profile.user__username }}
 						</a>
 					</td>
-					<td class="center-align">{{ profile.count }}</td>
+					<td class="right-align">{{ profile.count }}</td>
 				</tr>
 				{% endfor %}
 			</table>

@@ -72,6 +72,20 @@ form a {
     color: #FF6F00;
 }
 
+.allauth-container {
+    display: grid;
+    max-width: 550px;
+    justify-content: center;
+}
+
+.allauth-container form {
+    padding-bottom: 27px;
+}
+
+.allauth-container i input {
+    color: #ffe082;
+}
+
 /* Header */
 
 .header-wrapper {
@@ -124,11 +138,19 @@ form a {
 
 .slogan-cta-distributor {
     margin: 0;
+    padding: 20px;
     width: 100%;
 }
 
 .feats-container {
     width: 90%;
+}
+
+/* Footer */
+
+.page-footer ul {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Books */
@@ -172,6 +194,12 @@ form a {
 
 .book-detail-image {
     height: 250px;
+}
+
+.info-data {
+    font-size: 110%;
+    font-weight: 600;
+    padding-left: 9px;
 }
 
 .sinopsis-display {
@@ -268,7 +296,32 @@ form a {
     text-align: justify;
 }
 
+.anchor-with-icons {
+    display: inline-flex;
+}
 
+fieldset {
+    border: none;
+}
+
+fieldset legend {
+    font-style: italic;
+    position: relative;
+    top: 15px;
+}
+
+/* -------------- Hover Effects -------------- */
+
+.page-footer ul li a:hover,
+.footer-copyright div a:hover,
+a:hover span,
+a:hover .material-icons,
+.input-field button span:hover,
+.hover-effect-button a:hover,
+.hover-effect-button button:hover,
+.anchor-with-icons:hover {
+    color: #FF6F00 !important;
+}
 
 /* -------------- Media Queries -------------- */
 

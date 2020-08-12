@@ -15,12 +15,12 @@
             <div class="col s12 m6 pt-1 center-align">
                 <a class="grey-text text-darken-4" href="{% url 'book_detail' book.book_id %}">
                     <div class="p-2">
-                        <h6>{{ book.title}}</h6>
+                        <h5>{{ book.title}}</h5>
                     </div>
                     <img class="z-depth-3" src="{{ book.image_url}}" height="240" alt="book-cover">
                 </a>
                 <div>
-                    <a class="red-text text-accent-4" href="{% url 'rmv_book' book.book_id %}">
+                    <a class="red-text text-accent-4 anchor-with-icons" href="{% url 'rmv_book' book.book_id %}">
                         <strong><em class="hide-on-small-only">Remove</em></strong>
                         <i class="material-icons rigth">delete_forever</i>
                     </a>
@@ -30,11 +30,11 @@
         {% for i in empty_loop %}
         <div class="col s12 m6 pt-1 center-align">
             <div class="p-2">
-                <h6>Empty Book</h6>
+                <h5>Empty Book</h5>
             </div>
             <img class="z-depth-3" src="{{ MEDIA_URL }}missingbook.png" height="240" alt="book-cover">
             <div>
-                <a class="indigo-text text-accent-2" href="{% url 'all_books' %}">
+                <a class="indigo-text text-accent-2 anchor-with-icons" href="{% url 'all_books' %}">
                     <strong><em class="hide-on-small-only">Add a Book</em></strong>
                     <i class="material-icons rigth">note_add</i>
                 </a>
