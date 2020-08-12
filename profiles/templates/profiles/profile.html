@@ -14,7 +14,6 @@
             <div class="row">
                 <p><strong>Username:</strong> {{ profile.user.username }}</p>
                 <p><strong>E-mail:</strong> {{ profile.user.email }}</p>
-                <p><strong>Top Reader:</strong> #{{ profile.read_rank }}</p>
                 <p><strong>Top Reviewer:</strong> #{{ profile.review_rank }}</p>
                 <a class="amber-text text-darken-4 edit-button" href="{% url 'edit_profile' user.username %}">
                     <em>Edit My Profile</em>

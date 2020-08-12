@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container grey-text text-darken-4">
+    <!-- Title -->
+    <div class="row mb-0">
+        <div class="col s12 center">
+            <h4><strong>Top Rankings</strong></h4>
+        </div>
+    </div>
+    <!-- Ranks Display -->
+    <div class="row mb-0 pb-3">
+		<div class="col s12 l4 mt-3">
+			<!-- Book Reviews -->
+			<table>
+				<tr>
+					<th>#</th>
+					<th>Most Reviewed Books</th>
+					<th><em>(number)</em></th>
+				</tr>
+				{% for book in top_rw_book %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>
+						<a class="grey-text text-darken-4" href="{% url 'book_detail' book.book_id %}">
+							{{ book.title }}
+						</a>
+					</td>
+					<td class="center-align">{{ book.ratings_count }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="col s12 l4 mt-3">
+			<!-- Book Average -->
+			<table>
+				<tr>
+					<th>#</th>
+					<th>Best Average Book</th>
+					<th><em>(number)</em></th>
+				</tr>
+				{% for book in top_avg_book %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>
+						<a class="grey-text text-darken-4" href="{% url 'book_detail' book.book_id %}">
+							{{ book.title }}
+						</a>
+					</td>
+					<td class="center-align">{{ book.average_rating }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="col s12 l4 mt-3">
+			<!-- User Reviews -->
+			<table>
+				<tr>
+					<th>#</th>
+					<th>Best Reviewers</th>
+					<th><em>(reviews)</em></th>
+				</tr>
+				{% for profile in rw_user %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>
+						<a class="grey-text text-darken-4" href="{% url 'user_reviews' profile.user__username %}">
+							{{ profile.user__username }}
+						</a>
+					</td>
+					<td class="center-align">{{ profile.count }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+    </div>
+</div>
+{% endblock %}

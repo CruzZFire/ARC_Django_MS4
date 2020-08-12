@@ -76,7 +76,7 @@ def update_profile(request, username):
             messages.error(request, 'Error Changing Avatar')
             return redirect(reverse('profile'))
 
-    return redirect(reverse('profiles/profile'))
+    return redirect(reverse('profile'))
 
 
 @login_required

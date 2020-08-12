@@ -42,7 +42,7 @@
                         <a href="{% url 'all_books' %}" class="amber-text text-lighten-3">Browse All Books</a>
                     </li>
                     <li>
-                        <a href="" class="amber-text text-lighten-3">Top Listings</a>
+                        <a href="{% url 'rankings' %}" class="amber-text text-lighten-3">Top Listings</a>
                     </li>
                     <li class="amber lighten-3">
                         <a href="{% url 'subscriptions' %}" class="grey-text text-darken-4"><strong>Promote Me!</strong></a>
@@ -107,7 +107,7 @@
                 </a>
             </li>
             <li>
-                <a class="waves-effect grey-text text-darken-4" href="#!">
+                <a class="waves-effect grey-text text-darken-4" href="{% url 'rankings' %}">
                     Top Listings
                 </a>
             </li>
