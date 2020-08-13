@@ -310,6 +310,31 @@ fieldset legend {
     top: 15px;
 }
 
+/* Subscriptions */
+
+.offers-row {
+    display: flex;
+}
+
+.offers-row > div:first-of-type {
+    margin-left: 0 !important;
+}
+
+.offer-card {
+    min-height: 300px;
+}
+
+.offer-title {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.offer-description {
+    height: 180px;
+}
+
 /* -------------- Hover Effects -------------- */
 
 .page-footer ul li a:hover,
@@ -337,6 +362,10 @@ a:hover .material-icons,
 
     .review-user {
         border: none;
+    }
+
+    .offers-row {
+        display: block;
     }
 }
 

@@ -4,32 +4,48 @@
 {% block content %}
 <div class="container grey-text text-darken-4">
     <!-- Title -->
-    <div class="row mb-0 center">
-        <h5>Subscription Offers</h5>
+    <div class="row mb-0">
+        <div class="col s12 center">
+            <h4><strong>Subscription Plans</strong></h4>
+        </div>
     </div>
     <!-- Offers -->
-    <div class="row mb-0 grey darken-4 center">
-        <div class="col s12 m4 amber-text text-lighten-3">
-            <p>Offer 1</p>
+    <div class="row center offers-row">
+        {% for i in 123|make_list %}
+        <div class="col s12 m4 mt-3">
+            <div class="grey lighten-5 z-depth-2 hoverable offer-card">
+                <div class="grey darken-4 amber-text text-lighten-3 offer-title">
+                    <h6>
+                        <strong>Offer Name</strong>
+                    </h6>
+                </div>
+                <div class="grey lighten-5">
+                    <div class="row p-2 offer-description">
+                        <p>
+                            Offer description
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h6>
+                            <strong>Price €</strong>/per month
+                        </h6>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col s12 m4 amber-text text-lighten-3">
-            <p>Offer 2</p>
-        </div>
-        <div class="col s12 m4 amber-text text-lighten-3">
-            <p>Offer 3</p>
-        </div>
+        {% endfor %}
     </div>
     <!-- CTA if logged -->
-    <div class="row mb-0 pb-1 grey darken-3 center">            
-        <a href="{% url 'subscriptions' %}" class="amber lighten-3 grey-text text-darken-4">
-            <strong>Promote Me!</strong>
+    <div class="row center hover-effect-button">            
+        {% if user.is_authenticated %}
+        <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'subscriptions' %}">
+            Promote Me!
         </a>
+        {% else %}
+        <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'account_login' %}">
+            Log In Now!
+        </a>
+        {% endif %}
     </div>
 </div>
-<!-- JS inits and meter-bars -->
-<script type="text/javascript">
-    $(document).ready(function(){
-
-    });
-</script>
 {% endblock %}
