@@ -14,6 +14,13 @@
             <div class="row">
                 <p>Username: <span class="info-data">{{ profile.user.username }}</span></p>
                 <p>E-mail: <span class="info-data">{{ profile.user.email }}</span></p>
+                {% if user.userprofile.has_sub %}
+                <p>
+                    <i class="tiny material-icons">star</i>
+                    <span class="info-data">Subscribed Book Promoter</span>
+                    <i class="tiny material-icons">star</i>
+                </p>
+                {% endif %}
                 <a class="mt-3 amber-text text-darken-4 edit-button" href="{% url 'edit_profile' user.username %}">
                     <em>Edit My Profile</em>
                 </a>

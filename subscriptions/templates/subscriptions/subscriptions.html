@@ -76,16 +76,17 @@
         </div>
     </div>
     <!-- CTA if logged -->
-    <div class="container row mb-3 center hover-effect-button">            
+    <div class="container row mt-3 mb-3 center hover-effect-button">            
         {% if user.is_authenticated %}
         <form class="container" action="{% url 'payment_process' %}" method="POST">
         {% csrf_token %}
-            <div class="mb-3">
+            <div class="mb-3 input-field">
                 <select name="subscription" class="input-field col s12">
                     <option selected value="onemonth">Single Month</option>
                     <option value="oneyear">Full Year</option>
                     <option value="monthly">Monthly Subscription</option>
                 </select>
+                <label>Select a Subscription Plan</label>
             </div>
             <button type="submit" class="btn-small grey darken-4 amber-text text-lighten-3">
                 Promote Me!

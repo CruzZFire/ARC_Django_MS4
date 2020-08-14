@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_js %}
+<script src="{% static 'subscriptions/js/3d_secure.js' %}"></script>
+<script>
+    _3dsec('{{ STRIPE_PUBLIC_KEY }}', '{{ payment_intent_secret }}');
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <!-- Message -->
@@ -9,7 +16,7 @@
             <div class="container grey lighten-5 z-depth-2">
                 <div>
                     <img class="circle" src="" height=450>
-                    <h6>Subscription Succesfull, Thanks!!</h6>
+                    <h6 id="3d_secure_output"></h6>
                     <p class="p-2">You can now promote books from the each book page</p>
                 </div>
                 <div class="center-align mt-3 pb-3 hover-effect-button">
