@@ -67,7 +67,7 @@ def payment_process(request):
     context =  {
         "user_email": request.user.email,
         "sub_instance": sub_instance,
-        "sub_instance_id": sub_instance.stripe_sub_id,
+        "stripe_sub_id": sub_instance.stripe_sub_id,
         "client_secret": payment_intent.client_secret,
         "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY,
         "payment_intent_id": payment_intent.id,
@@ -81,7 +81,7 @@ def payment_display(request):
 
     payment_intent_id = request.POST['payment_intent_id']
     payment_method_id = request.POST['payment_method_id']
-    stripe_sub_id = request.POST['sub_instance_id']
+    stripe_sub_id = request.POST['stripe_sub_id']
     stripe.api_key = STRIPE_API_KEY
 
     customer = stripe.Customer.create(
