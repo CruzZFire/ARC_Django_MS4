@@ -11,36 +11,86 @@
     </div>
     <!-- Offers -->
     <div class="row center offers-row">
-        {% for i in 123|make_list %}
         <div class="col s12 m4 mt-3">
-            <div class="grey lighten-5 z-depth-2 hoverable offer-card">
+            <div class="grey lighten-5 z-depth-2 offer-card">
                 <div class="grey darken-4 amber-text text-lighten-3 offer-title">
                     <h6>
-                        <strong>Offer Name</strong>
+                        <strong>Single Month</strong>
                     </h6>
                 </div>
-                <div class="grey lighten-5">
+                <div class="container grey lighten-5">
                     <div class="row p-2 offer-description">
                         <p>
-                            Offer description
+                            Join ARC for a month and promote the books you want!
                         </p>
                     </div>
                     <div class="row">
                         <h6>
-                            <strong>Price €</strong>/per month
+                            <strong>20 €</strong>/one month
                         </h6>
                     </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
+        <div class="col s12 m4 mt-3">
+            <div class="grey lighten-5 z-depth-2 offer-card">
+                <div class="grey darken-4 amber-text text-lighten-3 offer-title">
+                    <h6>
+                        <strong>Full Year</strong>
+                    </h6>
+                </div>
+                <div class="container grey lighten-5">
+                    <div class="row p-2 offer-description">
+                        <p>
+                            Get reduced price paying the whole year in advance!
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h6>
+                            <strong>100 €</strong>/one year
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4 mt-3">
+            <div class="grey lighten-5 z-depth-2 offer-card">
+                <div class="grey darken-4 amber-text text-lighten-3 offer-title">
+                    <h6>
+                        <strong>Monthly Subscription</strong>
+                    </h6>
+                </div>
+                <div class="container grey lighten-5">
+                    <div class="row p-2 offer-description">
+                        <p>
+                            Subscribe monthly with a great offer!!
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h6>
+                            <strong>10 €</strong>/per month
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- CTA if logged -->
-    <div class="row center hover-effect-button">            
+    <div class="container row mb-3 center hover-effect-button">            
         {% if user.is_authenticated %}
-        <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'subscriptions' %}">
-            Promote Me!
-        </a>
+        <form class="container" action="{% url 'payment_process' %}" method="POST">
+        {% csrf_token %}
+            <div class="mb-3">
+                <select name="subscription" class="input-field col s12">
+                    <option selected value="onemonth">Single Month</option>
+                    <option value="oneyear">Full Year</option>
+                    <option value="monthly">Monthly Subscription</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-small grey darken-4 amber-text text-lighten-3">
+                Promote Me!
+            </button>
+        </form>
         {% else %}
         <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'account_login' %}">
             Log In Now!
@@ -48,4 +98,10 @@
         {% endif %}
     </div>
 </div>
+<!-- JS inits and meter-bars -->
+<script>
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+</script>
 {% endblock %}

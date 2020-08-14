@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <!-- Message -->
+    <div class="row center">
+        <div class="col s12">
+            <div class="grey lighten-5 z-depth-2">
+                <div>
+                    <img class="circle" src="" height=450>
+                    <h6>Subscription Succesfull</h6>
+                </div>
+                <div class="center-align mb-3 hover-effect-button">
+                    <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'profile' %}">
+                        Back to Your Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
