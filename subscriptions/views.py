@@ -97,7 +97,7 @@ def payment_display(request):
             customer=customer.id,
             items=[
                 {
-                    'subscription': stripe_sub_id
+                    'plan': stripe_sub_id
                 },
             ]
         )
