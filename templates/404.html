@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container grey-text text-darken-4">
+    <!-- Title -->
+    <div class="row mb-0">
+        <div class="col s12 center">
+            <h4><strong>Something was wrong</strong></h4>
+        </div>
+    </div>
+    <!-- Image Display -->
+    <div class="row mb-0 mt-3 pb-3 center-align">
+        <img class="circle" src="{{ MEDIA_URL }}bookimages.png" height=550>
+        <div class="center-align mt-3 pb-3 hover-effect-button">
+            <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'home' %}">
+                Back Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
