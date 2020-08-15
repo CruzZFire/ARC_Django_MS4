@@ -12,16 +12,16 @@ class SubscriptionOneMonth:
 
 class SubscriptionOneYear:
     def __init__(self):
-        self.stripe_sub_id = settings.STRIPE_ONE_YEAR_ID
-        self.amount = 10000
-        self.name = 'One Year Subscription'
+        self.stripe_sub_id = settings.STRIPE_HALF_YEAR_ID
+        self.amount = 8000
+        self.name = 'Half Year Subscription'
 
 
 class SubscriptionMonthly:
     def __init__(self):
-        self.stripe_sub_id = settings.STRIPE_SUBSCRIPTION_ID
-        self.amount = 1000
-        self.name = 'Monthly Subscription'
+        self.stripe_sub_id = settings.STRIPE_ONE_YEAR_ID
+        self.amount = 10000
+        self.name = 'One Year Subscription'
 
 
 class SubscriptionType:
@@ -32,12 +32,12 @@ class SubscriptionType:
         if sub_value == 'onemonth':
             self.subscription = SubscriptionOneMonth()
             self.id = 'onemonth'
-        elif sub_value == 'oneyear':
+        elif sub_value == 'halfyear':
             self.subscription = SubscriptionOneYear()
-            self.id = 'oneyear'
-        elif sub_value == 'monthly':
+            self.id = 'halfyear'
+        elif sub_value == 'oneyear':
             self.subscription = SubscriptionMonthly()
-            self.id = 'monthly'
+            self.id = 'oneyear'
         else:
             raise ValueError('Invalid sub_value value')
 
@@ -54,24 +54,3 @@ class SubscriptionType:
     @property
     def name(self):
         return self.subscription.name
-
-
-def set_paid_until(charge):
-    stripe.api_key = settings.STRIPE_WH_SECRET
-    pi = stripe.PaymentIntent.retrieve(charge.payment_intent)
-
-    if pi.customer:
-        customer = stripe.Customer.retrieve(pi.customer)
-        email = customer.email
-
-        if customer:
-            sub = stripe.Subscription.retrieve(
-                customer['subscriptions'].data[0].id
-            )
-            current_period_end = sub['current_period_end']
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            return False
-
-        user.userprofile.set_sub_until(current_period_end)

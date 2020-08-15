@@ -18,7 +18,7 @@ class UserProfile(models.Model):
     asked_books = models.ManyToManyField(Book, through='AskBook')
     sub_until = models.DateField(null=True, blank=True)
 
-    def set_sub_until(self, date_or_times):
+    def set_subsciption_until(self, date_or_times):
         if isinstance(date_or_times, int):
             sub_until = date.fromtimestamp(date_or_times)
         elif isinstance(date_or_times, str):
