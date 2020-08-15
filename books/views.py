@@ -81,3 +81,15 @@ def book_detail(request, book_id):
     }
 
     return render(request, 'books/book_detail.html', context)
+
+
+def set_promoted(request, book_id):
+    """ Set a book to the promoted list """
+    book = get_object_or_404(Book, pk=book_id)
+    book.promoted = True
+    book.save()
+    messages.success(request, 'Book will appear now in featured')
+
+    return redirect(reverse('book_detail', kwargs={
+        'book_id': book.book_id
+    }))

@@ -55,7 +55,7 @@
             <div class="center-align mb-3 hover-effect-button">
                 {% if user.userprofile.has_sub %}
                 <div class="row">
-                    <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'home' %}">
+                    <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'set_promoted' book.book_id %}">
                         Promote It
                     </a>
                 </div>

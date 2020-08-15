@@ -8,7 +8,7 @@ from reviews.models import Review
 def home(request):
     """" A view for index page """
 
-    promoted = Book.objects.filter(promoted=True)[0:11]
+    promoted = Book.objects.filter(promoted=True)[0:20]
 
     context = {
         "promoted": promoted,
