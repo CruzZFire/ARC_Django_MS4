@@ -82,9 +82,21 @@ def edit_review(request, review_id):
         messages.error(request, 'Sorry, only the reviewer can do that')
         return redirect(reverse('profile'))
 
-    review_found.delete()
-    messages.success(request, 'Review Edited and Published')
-    return redirect(reverse('home'))
+    form = ReviewForm(request.POST or None, instance=review_found)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            messages.success(request, 'Review Updated')
+            form = ReviewForm(None)
+            return redirect(reverse('profile'))
+
+    context = {
+        "form": form,        
+    }
+
+    return render(request, 'reviews/edit_review.html', context)
 
 
 @login_required
