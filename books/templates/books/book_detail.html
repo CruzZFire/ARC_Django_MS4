@@ -53,7 +53,14 @@
                 </div>
             </div>
             <div class="center-align mb-3 hover-effect-button">
-                {% if user.userprofile.has_sub %}
+                {% if book.promoted is True %}
+                <div class="row">
+                    <i class="tiny material-icons">star</i>
+                    <span class="info-data">Promoted Book</span>
+                    <i class="tiny material-icons">star</i>
+                </div>
+                {% endif %}
+                {% if user.userprofile.has_sub and book.promoted is False %}
                 <div class="row">
                     <a class="btn-small grey darken-4 amber-text text-lighten-3" href="{% url 'set_promoted' book.book_id %}">
                         Promote It

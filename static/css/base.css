@@ -194,6 +194,7 @@ form a {
 
 .book-detail-image {
     height: 250px;
+    max-width: 180px;
 }
 
 .info-data {
