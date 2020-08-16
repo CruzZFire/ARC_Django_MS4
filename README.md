@@ -125,7 +125,21 @@ The **asked books** section, allows user to have a reading list and update it if
 The **user reviews** section, displays latest reviews made by user, [(see Features)](#Features).
 
 ### DB Structure
-A crucial part of the project is the database and its structure, [check schema](/media/screenshots/dbschema.png). The cluster consists of a dataset found in Kaggle.com and processed by me to a json file to add as Django fixtures. Here's the explanation of the database tables and relations between them:
+A crucial part of the project is the database and its structure for the relations between models, [check schema](/media/screenshots/dbschema.png). The cluster consists of a dataset found in Kaggle.com and processed by me to a json file to load the data as Django fixtures. Here's the explanation of the main database tables:
+
+* **User:** produced from *Sign Up* form by the allauth extension, contains the username and e-mail, password stored and managed by the extension itself. Check a stored example from admin [here](/media/screenshots/dbuser.png).
+
+* **UserProfile:** collects from the User and extends it for a profile making. Contains de asked books for a profile feature, the profile picture url and the date until which is subscribed in the case user is subscribed. Check a stored example from admin [here](/media/screenshots/dbprofile.png).
+
+* **AskBook:** produces the content of the asked_books in the User Profile by collecting user and book selected.
+
+* **Book:** contains all the data collected from the dataset fixtures, sinopsis was lacking on the dataset so the same 'Lorem Ipsum' was placed on the display for the 2500 books. A promoted boolean field was added as perk for subscribed. Check a stored example from admin [here](/media/screenshots/dbbook.png).
+
+* **Review:** contains all the data collected from the review creation form and relates to user and book. A value_count field was added for future features, [(check Futrure Features)](#Future-Features-Objectives). Check a stored example from admin [here](/media/screenshots/dbreview.png).
+
+* **Subscription:** created after User payment subscription is made. Connect User Profile and sets the sub_untill field.
+
+  ![DB Schema](/media/screenshots/dbschema.png "DB Schema")
 
 
 ## Contact
