@@ -210,7 +210,85 @@ Ordering the possibilities in a list of viability, considering both complexity a
 
 ---
 
+## Testing
+During the development phase, using VS Code and running a local server in a virtual environment made it very easy to adjust response and test the majority as was coded, via Developer Tools and terminal outputs.
 
+After finishing the coding, used "HTML validator", "CSS lint" and "PEP 8 validator" checking for possible warnings or errors.
+
+**Global Display:** tests were made on browsers (Chrome, Edge, Firefox), tablets and phones ensuring responsiveness of the WebApp on every screen size. Some examples of portable devices used by testers involved or myself were:
+
+ * Huawei Mate 9 Lite, Huawei GR5 2017
+ * Apple iPhone 11
+ * Apple iPhone 8
+ * Samsung Galaxy A50
+ * BQ Aquaris M10 Ubuntu Edition
+ * Microsoft Surface 2
+ 
+
+
+---
+
+## Deployment
+This site is temporarily hosted on Heroku Apps, [(access here)](https://arc-community-aglz.herokuapp.com/). 
+
+Deployment on Heroku was made before submitting the project for final testing. The project was kept in a virtual environment on my end for testing and modifications, even though it was committed to GitHub and updated via GitBash on a frequent basis.
+
+#### Tech Used
+1. HTML5
+2. CSS3
+3. [Materialize CSS](https://materializecss.com/about.html)
+4. Python
+5. Postgres for Heroku (plugin)
+6. Django + django-extensions [(see requirements.txt)](requirements.txt)
+
+#### Configuration on Heroku Apps
+1. Subscribe to Heroku and create your new app.
+2. In your GitBash/Terminal go to your master directory.
+3. Type **"heroku login"** and follow the prompts.
+4. Once logged in, type **"git push heroku master"** and wait until the process finishes.
+5. Once your app is loaded on Heroku, type **"heroku ps:scale web=1"** to set Heroku on a basic level.
+6. After scarce time, your app should be ready. Either follow your terminal prompted link or go to your Heroku profile.
+7. Mind that this App needs access to a database and the "Config Vars", see all 'get.os.environ' in the settings.py at the root folder.
+
+#### Cloning the GitHub Repository
+To run it on your local computer with a virtual environment, see below, the repository must be cloned beforehand.
+
+1. Once in the repository locate the *Clone or Download* dropdown menu.
+2. Copy either the HTTPS or SSH route to your clipboard.
+3. Open *GitBash* and move to the folder where you want to place the cloned repository files.
+4. Type **"git clone"**, **tap space-bar once** and then paste the route copied in your clipboard at *step 2*.
+5. Press Enter to exec the command and the local cloned files will be created.
+
+#### Running it localy
+To run it on your local computer with a virtual environment, the repository must be cloned beforehand, see above.
+
+1. Install python3 on your computer.
+2. Access to the master directory in your terminal and type **"python3 -m venv venv"** to create a virtual environment called "venv" in this case (second venv on command).
+3. After venv files are created, if you are using Mac/Linux type **"source venv/bin/activate"**, on Windows type **"venv\Scripts\activate"** instead.
+4. Your terminal should be placed on your master directory, but one level further in your virtual environment "venv".
+5. You will access from your virtual environment through the *manage.py* file so got to the terminal and write **"python manage.py runserver"** and the terminal itself will give you a local port to access the app live.
+
+---
+
+## Credits
+
+All the ideas, materials displayed, database entry and all the site designs belong to Ángel González.
+
+### Images
+[*Canva.com*](https://www.canva.com/)
+
+**Disclaimer:** This site and its contents or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the publisher except for the use of brief quotations as credits and/or recommendation. Copyright © 2020.
+
+### Acknowledgements
+Great help once more from the documentation of these two sites, you can really learn as you go and adapt their examples to your own code:
+
+* [w3schools](https://www.w3schools.com/)
+* [MDN](https://developer.mozilla.org/en-US/)
+* [Django](https://docs.djangoproject.com/en/3.1/)
+
+Also a shoutout to my mentor on this project [Maranatha A. Ilesanmi](https://github.com/mbilesanmi) for providing guidance when needed.
+
+---
 
 ## Contact
 
