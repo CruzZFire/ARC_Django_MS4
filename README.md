@@ -68,25 +68,25 @@ The most ambitious goal, which wasn't fully implemented due to scarce time, is t
 ### Wireframes
 Here are the first concept wireframes:
 
-* [Index Page](/packageapp/static/wireframes/draft/Home.png "Index Page")
+* [Index Page](/media/screenshots/wf-index.png "Index Page")
 
-![Profile Page](/packageapp/static/wireframes/draft/LogIn.png "Profile Page")
+![Profile Page](/media/screenshots/wf-profile.png "Profile Page")
 
-* [Books Page](/packageapp/static/wireframes/draft/LogIn.png "Books Page")
+* [Books Page](/media/screenshots/wf-books.png "Books Page")
 
-* [Book Profile](/packageapp/static/wireframes/draft/Search_Result.png "Book Profile")
+* [Book Profile](/media/screenshots/wf-detail.png "Book Profile")
 
 Final concept wireframes:
 
 * Index Page: 
 
-    ![Browser-View](/packageapp/static/wireframes/idea/Home.png "Browser View")
+    ![Browser-View](/media/screenshots/wf-index-final.png "Index Page")
 
-* [Profile Page](/packageapp/static/wireframes/idea/LogIn.png "Profile Page")
+* [Profile Page](/media/screenshots/wf-profile-final.png "Profile Page")
 
-* [Books Page](/packageapp/static/wireframes/draft/LogIn.png "Books Page")
+* [Books Page](/media/screenshots/wf-books-final.png "Books Page")
 
-* [Book Profile](/packageapp/static/wireframes/draft/Search_Result.png "Book Profile")
+* [Book Profile](/media/screenshots/wf-detail-final.png "Book Profile")
 
 ### Scope
 Considering the goals set in [Strategy](#Strategy), it has been necessary to create modern desing with an grey and amber sharp style, [(see Theming)](#Theming).
@@ -165,7 +165,7 @@ As explained, this WebApp consists on several Django Apps containing different v
 
     More related to a base template but associated with the home page nonetheless, there a hidden *side navigation bar* that displays when manu icon is clicked or finger swiped left on touchscreen devices, [(see sidebar preview)](/media/screenshots/sidebar-full.png "Sidebar Menu").
 
-* **Profiles App**: Users are registered by using Allauth extension for Django and associted with a User Profile, [(see DB Schema)](/media/screenshots/dbschema.png "DB Schema"). Login required decorator is also used to protect the views that are made not available for anonimous. Here we can see a test, empty, user profile, with the diferent sections: user info and avatar, user read list and preview of the latest user reviews, [(see empty user profile)](/media/screenshots/sidebar-full.png "Empty Profile"):
+* **Profiles App**: Users are registered by using Allauth extension for Django and associted with a User Profile, [(see DB Schema)](/media/screenshots/dbschema.png "DB Schema"). Login required decorator is also used to protect the views that are made not available for anonimous. Here we can see a test, empty, user profile, with the diferent sections: user info and avatar, user read list and preview of the latest user reviews, [(see empty user profile)](/media/screenshots/profile-full.png "Empty Profile"):
 
     *User Info Edit*: this link to a form to edit the account details, [(check)](/media/screenshots/profile-edit.png "Profile Edit").
 
