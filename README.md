@@ -56,7 +56,7 @@ Examples of the user stories:
 
 The site [(see full-size preview)](/media/screenshots/home-full.png) is based on the Django framework. This system consists of "Views" with different "Models" filling inside of "Templates" depending on the route taken by the user. The way this system works makes all transitions easy and smooth for the user, being highly intuitive, but also for the developer, making it very easy to connect the models and views from different apps. In this specific WebApp, user experience is supported with toast messages each time an action is completed, giving this way direct informations to the user of any progress made.
 
-Both the browser version and the portable device version are distributed in the same way, navigation stays fix at top and deploys as sidebar [(see browser preview)](/media/screenshots/home-full.png) making it easier to access every part of the WebApp when needed. In the portable device version, navbar is reduced to the logo and a menu icon [(see protable device preview)](/media/screenshots/home-phone.png).
+Both the browser version and the portable device version are distributed in the same way, navigation stays fix at top and deploys as sidebar [(see Features)](#Features) making it easier to access every part of the WebApp when needed. In the portable device version, navbar is reduced to the logo and a menu icon [(see protable device preview)](/media/screenshots/home-phone.png).
 
 ### Strategy
 The goal is that the user has creates a profile and uses the WebApp to review and recommend books.
@@ -140,6 +140,76 @@ A crucial part of the project is the database and its structure for the relation
 * **Subscription:** created after User payment subscription is made. Connect User Profile and sets the sub_untill field.
 
   ![DB Schema](/media/screenshots/dbschema.png "DB Schema")
+
+### Theming
+The font for the site is the default Materialize CSS, [Roboto](https://fonts.google.com/specimen/Roboto), which is very clear and ideal for the display of information.
+
+The background pictures, and avatars were taken and adjusted in [Canva](https://www.canva.com/).
+
+The color palette, as mentioned before, sticks to greyscale tones that are interpellated with the amber used for the CTA's.
+
+---
+
+## Features
+As explained, this WebApp consists on several Django Apps containing different views:
+
+* **Site Icon**: a personalized WebApp icon display on the browser. Also, it appears in the case someone bookmarks the game page.
+
+    ![Favicon](/static/favicon.png "Favicon")
+
+* **Home App**: this app contains two views. One is the index from which we can extract the promoted books carousel as feature.
+
+    ![Book Carousel](/media/screenshots/index-carousel.png "Navbar logged off")
+
+    In this app is also placed another view which contains the *Top Listings* feature, this view contains three rankings for book and users, [(see rankings page preview)](/media/screenshots/rankings-full.png "Rankings Page").
+
+    More related to a base template but associated with the home page nonetheless, there a hidden *side navigation bar* that displays when manu icon is clicked or finger swiped left on touchscreen devices, [(see sidebar preview)](/media/screenshots/sidebar-full.png "Sidebar Menu").
+
+* **Profiles App**: Users are registered by using Allauth extension for Django and associted with a User Profile, [(see DB Schema)](/media/screenshots/dbschema.png "DB Schema"). Login required decorator is also used to protect the views that are made not available for anonimous. Here we can see a test, empty, user profile, with the diferent sections: user info and avatar, user read list and preview of the latest user reviews, [(see empty user profile)](/media/screenshots/sidebar-full.png "Empty Profile"):
+
+    *User Info Edit*: this link to a form to edit the account details, [(check)](/media/screenshots/profile-edit.png "Profile Edit").
+
+    *User Books Edit*: this link to a form to edit the user books list, [(check)](/media/screenshots/profile-books.png "Profile Books").
+
+    *User Review*: this link to a view for all the user reviews, [(check)](/media/screenshots/profile-reviews.png "Profile Review"). This view contains both filtering by rating and sorting by date features. From the reviews book-details view can be accessed clicking on the book title inside the review.
+
+* **Books App**: books were loaded adapting the model to the dataset processed. Book cover image is provided by an url, and sinopsis isn't provided so a Lorem Ipsum text was used for all the 2500 books. Features and views contained on this app:
+
+    *All book display*: this view displays all the available books on cards that can be oppened to display some information and provide access to the book details page, [(check)](/media/screenshots/books-all.png "Books All"). This view has a 24-books pagination, 109 pages.
+
+    *Book search*: this view displays books related to the search word by title ot author, [(check)](/media/screenshots/books-search.png "Books Search"). Displays information for the user about the number of results and the text used for the search.
+
+    *Book details*: this view displays all the details for a selected book, [(check)](/media/screenshots/books-details.png "Books Details"). Contains information for the book in the upper part, a deployable sinopsis and information about the ratings underneath. In the lower part of the view the user can find the lastest reviews made for that book and access to a view with all the reviews for this book. As an extra, if the user is logged in, a form for publishing a new review is displayed.
+
+    *Book Review*: this link to a view for all the book reviews, [(check)](/media/screenshots/books-reviews.png "Books Reviews"). This view contains both filtering by rating and sorting by date features. From the reviews user-reviews view can be accessed by clicking on the user info of the review. As an extra, if the user is logged in, a form for publishing a new review is displayed.
+
+* **Reviews App**: reviews are related with users and books as explained in previous App descriptions. Extra features from this app that are available if the user logged is the author of the review:
+
+    *Edit review*: this view displays the review form autocomplete with the old review data and allows to update the content, [(check)](/media/screenshots/reviews-edit.png "Edit Reviews").
+
+    *Delete review*: this route deletes selected review. Check display of this links on [(user reviews)](/media/screenshots/reviews-user.png "User Reviews"), [(book reviews)](/media/screenshots/reviews-books.png "Book Reviews"), [(profile reviews)](/media/screenshots/reviews-profile.png "Profile Reviews").
+
+* **Subscriptions App**: subscriptions are related available users, allowing them to promote books. Check subscription trigger view evolve from [anonimous-user](/media/screenshots/subscriptions-anon.png "Anon Subs") with log-in prompt, to [logged-user](/media/screenshots/subscriptions-logged.png "Logged Subs") with from to subscribe, to [already-promoted-user](/media/screenshots/subscriptions-subbed.png "Subbed Subs") with information about the on-going subscription:
+
+    *User profile*: user profile who is promted has the perk in their profile info, [(check)](/media/screenshots/subscriptions-user.png "User Promoted").
+
+    *Book promotion*: book-details displays a new option to promote the book for the users that have the promoted feature active, [(check)](/media/screenshots/subscriptions-book.png "Book Promoted"), if the book is already promoted, info is displayed, [(check)](/media/screenshots/subscriptions-book-on.png "Book Promoted On").
+
+* **Toasts**: on the whole WebApp, messages are displayed in the form of toasts prompting the user each time an action is performed, complete or an error has been caught. Colour changes depending on the type of message: info, error, etc...
+
+The whole site has response from small devices to larger screens, moving sections from sideways to top/bottom when needed to achieve the best display. It is not responsive on 4k at the moment. A 404 template was included to provide a way back to the home page in the case a bad route is taken by the user.
+
+### Future Features Objectives
+Ordering the possibilities in a list of viability, considering both complexity and relevance:
+
+1. Putting to use the value_count of the reviews model to allow the users to vote for usefull or not usefull reviews, being able to use this feature for rankings, short displays and such. (LOW complexity / MED relevance)
+
+2. Putting to use the is_writer feature of the user-profile model, allowing users to upload their own books. (MED complexity / MED relevance)
+
+3. Adding a database to upload the e-pubs for the books so users receive a copy of the e-pub after asking for the book. (HIG complexity / HIG relevance)
+
+---
+
 
 
 ## Contact
