@@ -93,7 +93,7 @@ def edit_review(request, review_id):
             return redirect(reverse('profile'))
 
     context = {
-        "form": form,        
+        "form": form,
     }
 
     return render(request, 'reviews/edit_review.html', context)

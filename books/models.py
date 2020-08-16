@@ -44,5 +44,5 @@ class Book(models.Model):
             book_rw_avg = (rw_1+rw_2*2+rw_3*3+rw_4*4+rw_5*5)/book_rw_all
         else:
             book_rw_avg = 'n/a'
-        
+
         return book_rw_avg

@@ -35,8 +35,9 @@ class Review(models.Model):
         rw_4 = user_reviews_found.filter(rating='4').count()
         rw_5 = user_reviews_found.filter(rating='5').count()
         if user_reviews_count > 0:
-            rating_avg = (rw_1 + rw_2*2 + rw_3*3 + rw_4*4 + rw_5*5)/user_reviews_count
+            rating_sum = (rw_1 + rw_2*2 + rw_3*3 + rw_4*4 + rw_5*5)
+            rating_avg = rating_sum/user_reviews_count
         else:
             rating_avg = 'n/a'
-        
+
         return rating_avg

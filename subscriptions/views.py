@@ -30,7 +30,7 @@ def payment_process(request):
         payment_method_types=['card']
     )
 
-    context =  {
+    context = {
         "user_email": request.user.email,
         "sub_instance": sub_instance,
         "stripe_sub_id": sub_instance.stripe_sub_id,
