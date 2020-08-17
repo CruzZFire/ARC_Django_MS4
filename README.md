@@ -198,6 +198,8 @@ As explained, this WebApp consists on several Django Apps containing different v
 
     *Book promotion*: book-details displays a new option to promote the book for the users that have the promoted feature active, [(check)](/media/screenshots/subscriptions-book.png "Book Promoted"), if the book is already promoted, info is displayed, [(check)](/media/screenshots/subscriptions-book-on.png "Book Promoted On").
 
+    *note*: for testing the payment service you may use some of the Stripe test cards, [(link)](https://stripe.com/docs/testing "Test Cards").
+
 * **Toasts**: on the whole WebApp, messages are displayed in the form of toasts prompting the user each time an action is performed, complete or an error has been caught. Colour changes depending on the type of message: info, error, etc...
 
 The whole site has response from small devices to larger screens, moving sections from sideways to top/bottom when needed to achieve the best display. It is not responsive on 4k at the moment. A 404 template was included to provide a way back to the home page in the case a bad route is taken by the user.
@@ -239,7 +241,7 @@ Specific and common errors are: missing field on table (missing migrations of mo
 
 **Stripe WebHooks:** stripe WebHook needs to be tested on set up and in this case as I set it up inside the *subscriptions* app during the development phase, using the virtual enviroment. Stripe provides the *stripe-cli* feature which you can install and use to check the webhooks in your local machine before publishing the WebApp, [(read the Docs)](https://stripe.com/docs/stripe-cli/webhooks "Stripe Docs").
 
-**Bugs:** no more bugs have been found until this moment.
+**Bugs:** just a visual bug is found at the moment of the submission, it consists of a fail of compliance between the way *materialize.css* styles check-boxes and the way *allauth* stablishes them, I didn't find overriding the allauth sign up form was ideal at this stage of the project because it will be developed further in near future and the form will then be overriden and revamped in extension.
 
 ---
 
