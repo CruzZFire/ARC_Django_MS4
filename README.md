@@ -49,6 +49,7 @@ Examples of the user stories:
 * User wants to have a profile in the social community, and be able to personalize it.
 * User wants to be able to search for the book catalog inside the WebApp.
 * User wants to be able to review a book, and be able to edit or delete if after.
+* User wants to be able see all the reviews of a book and be able to filter and sort them.
 * User wants to see the rankings of best books and users.
 * User wants to have a opportunity to promote books they like.
 * User wants easy access from its profile to the books and reviews connected.
@@ -70,7 +71,9 @@ Here are the first concept wireframes:
 
 * [Index Page](/media/screenshots/wf-index.png "Index Page")
 
-![Profile Page](/media/screenshots/wf-profile.png "Profile Page")
+* Profile Page:
+
+    ![Profile Page](/media/screenshots/wf-profile.png "Profile Page")
 
 * [Books Page](/media/screenshots/wf-books.png "Books Page")
 
@@ -213,7 +216,9 @@ Ordering the possibilities in a list of viability, considering both complexity a
 ## Testing
 During the development phase, using VS Code and running a local server in a virtual environment made it very easy to adjust response and test the majority as was coded, via Developer Tools and terminal outputs.
 
-After finishing the coding, used "HTML validator", "CSS lint" and "PEP 8 validator" checking for possible warnings or errors.
+After finishing the coding phase, used "HTML validator", "CSS lint" and "PEP 8 validator" checking for possible warnings or errors.
+
+During production phase and with the help of some beta testers:
 
 **Global Display:** tests were made on browsers (Chrome, Edge, Firefox), tablets and phones ensuring responsiveness of the WebApp on every screen size. Some examples of portable devices used by testers involved or myself were:
 
@@ -223,8 +228,18 @@ After finishing the coding, used "HTML validator", "CSS lint" and "PEP 8 validat
  * Samsung Galaxy A50
  * BQ Aquaris M10 Ubuntu Edition
  * Microsoft Surface 2
- 
 
+**Views:** profiting of the Django debug model template were error messages are displayed and detailed. Django debug template shows which Model or Variable in the view is producing the error so it becomes very easy to target the bug. Is also remarkable that the 404 template doesn't colide with this feature when debug is set to *True* in the root settings.
+
+Specific and common errors are: missing field on table (missing migrations of models), bad method/attributes applied (confusing querysets with objects on the view logic), missing value queryset (bad logic on the view when obtaining a queryset due to not existing or a bad method appliance) or missing variable (often caused by misspelling and non-complete renamings).
+
+**Buttons and Forms Actions:** as no automated tests were implemented for this project, it was crucial to test every button and every form with proper, but also incorrect inputs, to prove that every output is the intended one. Beta testers were very handy in correcting some of the bad behaving buttons that lead to the wrong view, especially in the latest implemented features that connect several apps.
+
+**Links hrefs:** a single external link is present. It was tested after deployment at Heroku and opens on a new tab with the repository containing the code for the project.
+
+**Stripe WebHooks:** stripe WebHook needs to be tested on set up and in this case as I set it up inside the *subscriptions* app during the development phase, using the virtual enviroment. Stripe provides the *stripe-cli* feature which you can install and use to check the webhooks in your local machine before publishing the WebApp, [(read the Docs)](https://stripe.com/docs/stripe-cli/webhooks "Stripe Docs").
+
+**Bugs:** no more bugs have been found until this moment.
 
 ---
 
@@ -272,7 +287,7 @@ To run it on your local computer with a virtual environment, the repository must
 
 ## Credits
 
-All the ideas, materials displayed, database entry and all the site designs belong to Ángel González.
+All the ideas, materials displayed, database entry, AWS Storage and all the site designs belong to Ángel González.
 
 ### Images
 [*Canva.com*](https://www.canva.com/)
