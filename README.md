@@ -207,11 +207,13 @@ The whole site has response from small devices to larger screens, moving section
 ### Future Features Objectives
 Ordering the possibilities in a list of viability, considering both complexity and relevance:
 
-1. Putting to use the value_count of the reviews model to allow the users to vote for usefull or not usefull reviews, being able to use this feature for rankings, short displays and such. (LOW complexity / MED relevance)
+1. Adding perks to pagination on books-search and all-books pages, like a direct link to last page and first when available and maybe 2/3 next and previous page numbers. (LOW complexity / LOW relevance)
 
-2. Putting to use the is_writer feature of the user-profile model, allowing users to upload their own books. (MED complexity / MED relevance)
+2. Putting to use the value_count of the reviews model to allow the users to vote for usefull or not usefull reviews, being able to use this feature for rankings, short displays and such. (LOW complexity / MED relevance)
 
-3. Adding a database to upload the e-pubs for the books so users receive a copy of the e-pub after asking for the book. (HIG complexity / HIG relevance)
+3. Putting to use the is_writer feature of the user-profile model, allowing users to upload their own books. (MED complexity / MED relevance)
+
+4. Adding a database to upload the e-pubs for the books so users receive a copy of the e-pub after asking for the book. (HIG complexity / HIG relevance)
 
 ---
 

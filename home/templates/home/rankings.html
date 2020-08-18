@@ -13,11 +13,11 @@
     <div class="row mb-0 pb-3">
 		<!-- Book Reviews -->
 		<div class="col s12 mt-3">
-			<table class="container highlight z-depth-1 grey lighten-5">
+			<table class="container mb-3 highlight z-depth-1 grey lighten-5">
 				<tr class="amber lighten-4">
 					<th>#</th>
 					<th>Most Reviewed Books</th>
-					<th class="right-align"><em>(number)</em></th>
+					<th class="right-align"><em>Count</em></th>
 				</tr>
 				{% for book in top_rw_book %}
 				<tr>
@@ -34,11 +34,11 @@
 		</div>
 		<!-- Book Average -->
 		<div class="col s12 mt-3">
-			<table class="container highlight z-depth-1 grey lighten-5">
+			<table class="container mb-3 highlight z-depth-1 grey lighten-5">
 				<tr class="amber lighten-4">
 					<th>#</th>
 					<th>Best Rated Books</th>
-					<th class="right-align"><em>(avg.)</em></th>
+					<th class="right-align"><em>Avg.</em></th>
 				</tr>
 				{% for book in top_avg_book %}
 				<tr>
@@ -55,11 +55,11 @@
 		</div>
 		<!-- User Reviews -->
 		<div class="col s12 mt-3">
-			<table class="container highlight z-depth-1 grey lighten-5">
+			<table class="container mb-3 highlight z-depth-1 grey lighten-5">
 				<tr class="amber lighten-4">
 					<th>#</th>
 					<th>Top Reviewers</th>
-					<th class="right-align"><em>(reviews)</em></th>
+					<th class="right-align"><em>Reviews</em></th>
 				</tr>
 				{% for profile in rw_user %}
 				<tr>
